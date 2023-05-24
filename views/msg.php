@@ -5,7 +5,7 @@ function displayAlert($message, $color)
     return sprintf($alrt, $color, $message);
 }
 
-$msg = $_GET['msg'];
+$msg = $_GET['msg'] ?? "";
 if (!empty($msg)) {
     switch ($msg) {
         case 'done':

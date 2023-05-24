@@ -21,13 +21,13 @@ class searchController
 
     public function invoke(&$prods, &$tags)
     {
-        $tags = $_GET['tag']; // An array of tag ID numbers
+        $tags = $_GET['tag'] ?? 1; // An array of tag ID numbers
 
         $productName = null;
         if (isset($_GET['product_name'])) {
             $productName = $_GET['product_name'];
         }
-        $lowerPrice = $_GET['lower_price'];
+        $lowerPrice = $_GET['lower_price'] ?? 0;
 
         $prods = $this->prodModel->search($tags, $productName, $lowerPrice);
         $tags = $this->tagModel->all();
