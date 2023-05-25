@@ -4,26 +4,36 @@ require_once('models/product.php');
 require_once('models/product_specs.model.php');
 require_once('models/product_image.model.php');
 
-class DetailController {
-    public static function render(): void
+class DetailController
+{
+    private static productModel $productModel;
+    private static productSpecsModel $productSpecsModel;
+    private static productImageModel $productImageModel;
+
+    private static function init(): void {
+        $db = DB();
+        self::$productModel = new productModel($db);
+        self::$productSpecsModel = new productSpecsModel($db);
+        self::$productImageModel = new productImageModel($db);
+    }
+
+    public static function Render(): void
     {
-        $productModel = new productModel(DB());
-        $productSpecsModel = new productSpecsModel(DB());
-        $productImageModel = new productImageModel(DB());
+        self::init();
 
         if (!empty($_GET["id"])) {
-            $prod = $productModel->get($_GET["id"]);
+            $prod = self::$productModel->get($_GET["id"]);
 
-            $specs = $productSpecsModel->get($prod->specs_id);
+            $specs = self::$productSpecsModel->get($prod->specs_id);
             $specsJSON = json_decode($specs->specs, true);
 
-            $images = $productImageModel->getImages($prod->id);
-            $thumbnail = $productImageModel->getThumbnail($prod->id);
+            $images = self::$productImageModel->getImages($prod->id);
+            $thumbnail = self::$productImageModel->getThumbnail($prod->id);
 
             $title = $prod->name;
-            $template = DIR_VIEWS . 'detail.tmpl.php';
+            $template = 'views/detail.tmpl.php';
 
-            require_once(DIR_VIEWS . 'layout.php');
+            require_once('views/layout.php');
         }
     }
 }
