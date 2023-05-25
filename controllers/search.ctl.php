@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
 require_once(DIR_MODULES . 'db.php');
-require_once(DIR_MODELS . 'product.model.php');
+require_once(DIR_MODELS . 'product.php');
 require_once(DIR_MODELS . 'product_image.model.php');
 require_once(DIR_MODELS . 'product_tag.model.php');
 
