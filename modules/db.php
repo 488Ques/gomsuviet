@@ -6,7 +6,7 @@ const USERNAME = 'root';
 const PASSWORD = 'root';
 const CHARSET = 'utf8mb4';
 
-/** @var PDO|null $db */
+/** @var PDO $db */
 $db = null;
 
 function newDB(): void
@@ -26,7 +26,7 @@ if ($db == null) {
     newDB();
 }
 
-function DB(): ?PDO
+function DB(): PDO
 {
     global $db;
     return $db;
