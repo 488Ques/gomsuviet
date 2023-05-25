@@ -1,35 +1,30 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
-require_once(DIR_MODULES . 'db.php');
-require_once(DIR_MODELS . 'product.model.php');
-require_once(DIR_MODELS . 'product_specs.model.php');
-require_once(DIR_MODELS . 'product_image.model.php');
+require_once('modules/db.php');
+require_once('models/product.php');
+require_once('models/product_specs.model.php');
+require_once('models/product_image.model.php');
 
-class detailController
-{
-    protected productModel $productModel;
-    protected productSpecsModel $productSpecsModel;
-    protected productImageModel $productImageModel;
-
-    public function __construct()
+class DetailController {
+    public static function render(): void
     {
-        $db = newDB();
-        $this->productModel = new productModel($db);
-        $this->productSpecsModel = new productSpecsModel($db);
-        $this->productImageModel = new productImageModel($db);
-    }
+        $productModel = new productModel(DB());
+        $productSpecsModel = new productSpecsModel(DB());
+        $productImageModel = new productImageModel(DB());
 
-    public function invoke(&$prod, &$specs, &$images)
-    {
         if (!empty($_GET["id"])) {
-            $prod = $this->productModel->get($_GET["id"]);
-            $specs = $this->productSpecsModel->get($prod->specs_id);
-            $images = $this->productImageModel->getImages($prod->id);
+            $prod = $productModel->get($_GET["id"]);
+
+            $specs = $productSpecsModel->get($prod->specs_id);
+            $specsJSON = json_decode($specs->specs, true);
+
+            $images = $productImageModel->getImages($prod->id);
+            $thumbnail = $productImageModel->getThumbnail($prod->id);
+
+            $title = $prod->name;
+            $template = DIR_VIEWS . 'detail.tmpl.php';
+
+            require_once(DIR_VIEWS . 'layout.php');
         }
     }
-
-    public function getProductThumbnail($productID)
-    {
-        return $this->productImageModel->getThumbnail($productID);
-    }
 }
+

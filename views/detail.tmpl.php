@@ -77,7 +77,7 @@
                             <input type="hidden" value="<?php echo $prod->name; ?>" name="name">
                             <input type="hidden" value="<?php echo $prod->price; ?>" name="price">
                             <input type="hidden" value="1" name="quantity">
-                            <input type="hidden" value="<?php echo $detailController->getProductThumbnail($prod->id); ?>" name="url">
+                            <input type="hidden" value="<?php echo $thumbnail ?>" name="url">
                         </form>
 
                         <!-- TODO Wishlist -->
