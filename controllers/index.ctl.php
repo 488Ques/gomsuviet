@@ -2,7 +2,7 @@
 require_once('modules/db.php');
 require_once('models/product.php');
 
-class Index {
+class IndexController {
     private static productModel $productModel;
 
     private static function init(): void

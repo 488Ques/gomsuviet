@@ -1,4 +1,4 @@
 <?php
 require_once('controllers/index.ctl.php');
 
-Index::Render();
+IndexController::Render();
