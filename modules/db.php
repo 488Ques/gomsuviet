@@ -1,7 +1,12 @@
 <?php
-require_once("config.php");
 
-function newDB()
+const HOST = 'localhost';
+const DB = 'db_electronicshop';
+const USERNAME = 'root';
+const PASSWORD = 'root';
+const CHARSET = 'utf8mb4';
+
+function newDB(): PDO
 {
     $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', HOST, DB, CHARSET);
     $options = [

@@ -1,7 +1,7 @@
 <?php
 require_once('../include_path.php');
 require_once(DIR_MODULES . 'helpers.php');
-require_once(DIR_MODULES . 'db_module.php');
+require_once(DIR_MODULES . 'db.php');
 require_once(DIR_MODELS . 'user.model.php');
 
 session_start();
