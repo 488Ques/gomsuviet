@@ -40,7 +40,7 @@ class productModel
         $this->db = $db;
     }
 
-    public function get($id)
+    public function get($id): product
     {
         $stmt = $this->db->prepare('SELECT id, name, description, price, specs_id, created_at, modified_at, deleted_at
          FROM product WHERE id = ? AND deleted_at IS NULL;');
