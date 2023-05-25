@@ -1,26 +1,26 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
-require_once(DIR_MODULES . 'db.php');
-require_once(DIR_MODELS . 'product.php');
-require_once(DIR_MODELS . 'product_image.model.php');
-require_once(DIR_MODELS . 'product_tag.model.php');
+require_once('modules/db.php');
+require_once('models/product.php');
+require_once('models/product_image.model.php');
+require_once('models/product_tag.model.php');
 
-class searchController
-{
-    protected productModel $prodModel;
-    protected productImageModel $imageModel;
-    protected productTagModel $tagModel;
+class SearchController {
+    private static productModel $productModel;
+    private static productImageModel $imageModel;
+    private static productTagModel $tagModel;
 
-    public function __construct()
+    private static function init(): void
     {
-        $db = newDB();
-        $this->prodModel = new productModel($db);
-        $this->imageModel = new productImageModel($db);
-        $this->tagModel = new productTagModel($db);
+        $db = DB();
+        self::$productModel = new productModel($db);
+        self::$imageModel = new productImageModel($db);
+        self::$tagModel = new productTagModel($db);
     }
 
-    public function invoke(&$prods, &$tags)
+    public static function Render(): void
     {
+        self::init();
+
         $tags = $_GET['tag'] ?? 1; // An array of tag ID numbers
 
         $productName = null;
@@ -29,16 +29,21 @@ class searchController
         }
         $lowerPrice = $_GET['lower_price'] ?? 0;
 
-        $prods = $this->prodModel->search($tags, $productName, $lowerPrice);
-        $tags = $this->tagModel->all();
+        $prods = self::$productModel->search($tags, $productName, $lowerPrice);
+        $tags = self::$tagModel->all();
+
+        $title = 'Danh sách sản phẩm';
+        $template = 'views/search.tmpl.php';
+
+        require_once('views/layout.php');
     }
 
-    public function getProductThumbnail($productID)
+    public static function GetProductThumbnail($productID): string
     {
-        return $this->imageModel->getThumbnail($productID);
+        return self::$imageModel->getThumbnail($productID);
     }
 
-    public function getProductTagsName($prodID) {
-        return $this->tagModel->getProductTagsName($prodID);
+    public static function GetProductTagsName($prodID) {
+        return self::$tagModel->getProductTagsName($prodID);
     }
 }

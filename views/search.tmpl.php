@@ -98,7 +98,7 @@
             <div class="row g-4 row-cols-xl-4 row-cols-lg-3 row-cols-2 row-cols-md-2 row-cols-sm-1 mt-2">
                 <?php
                 foreach ($prods as $prod) {
-                    $url = $searchCtl->getProductThumbnail($prod->id);
+                    $url = SearchController::GetProductThumbnail($prod->id);
                     include(DIR_VIEWS . 'productCard.partial.php');
                 }
                 ?>

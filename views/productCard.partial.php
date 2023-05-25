@@ -11,7 +11,7 @@
             <div class="text-muted mb-1">
                 <small>
                     <?php
-                    $prodTags = $searchCtl->getProductTagsName($prod->id);
+                    $prodTags = SearchController::GetProductTagsName($prod->id);
                     foreach ($prodTags as $i => $tag) {
                         if ($i == count($prodTags) - 1) {
                             echo $tag->name;
