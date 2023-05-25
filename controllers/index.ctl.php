@@ -1,20 +1,19 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
-require_once(DIR_MODULES . 'db.php');
-require_once(DIR_MODELS . 'product.model.php');
+require_once('modules/db.php');
+require_once('models/product.model.php');
 
-class indexController
+function render(): void
 {
-    protected productModel $productModel;
+    $productModel = new productModel(DB());
+    $phones = $productModel->getFourProducts(1);
+    $tablets = $productModel->getFourProducts(2);
+    $laptops = $productModel->getFourProducts(3);
+    $acs = $productModel->getFourProducts(4);
+    $fridges = $productModel->getFourProducts(5);
+    $washers = $productModel->getFourProducts(6);
 
-    public function __construct()
-    {
-        $db = newDB();
-        $this->productModel = new productModel($db);
-    }
+    $title = 'Trang chủ';
+    $template = 'views/index.tmpl.php';
 
-    public function getFourProducts($tagID)
-    {
-        return $this->productModel->getFourProducts($tagID);
-    }
+    require_once('views/layout.php');
 }
