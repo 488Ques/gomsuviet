@@ -1,6 +1,6 @@
 <?php
 require_once('modules/db.php');
-require_once('models/product.php');
+require_once('models/product.model.php');
 require_once('models/product_image.model.php');
 require_once('models/product_tag.model.php');
 
