@@ -6,5 +6,5 @@ function validateStringLength($str, $min, $max)
 
 function validateEmail($email)
 {
-    return filter_var($email, FILTER_VALIDATE_EMAIL) != false ? true : false;
+    return filter_var($email, FILTER_VALIDATE_EMAIL) != false;
 }
