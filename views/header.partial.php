@@ -1,5 +1,5 @@
 <?php
-require_once('modules/shoppingCart.php');
+require_once('modules/cart.php');
 ?>
 
 <nav class="navbar navbar-expand-lg">

@@ -1,7 +1,4 @@
 <?php
-//require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
-//require_once(DIR_DTOS . 'product.php');
-
 // $prod => array('id' => $id, 'name' => $name, 'price' => $price, 'quantity' => $quantity, 'url' => $url)
 // $cart = $_SESSION['cart'] => array($prod['id'] => $prod)
 

@@ -1,5 +1,5 @@
 <?php
-require_once(DIR_MODULES . 'shoppingCart.php');
+require_once(DIR_MODULES . 'cart.php');
 $cart = $_SESSION['cart'];
 ?>
 

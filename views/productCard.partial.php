@@ -36,7 +36,7 @@
             </h2>
 
             <div>
-                <form method="POST" action="/controllers/shoppingCart.ctl.php">
+                <form method="POST" action="/controllers/cart.ctl.php">
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="bi bi-cart-plus"></i> Thêm
                     </button>

@@ -66,7 +66,7 @@
                     <!-- <hr class="my-6"> -->
 
                     <div class="mt-6 row">
-                        <form class="col-md-4" method="POST" action="/controllers/shoppingCart.ctl.php">
+                        <form class="col-md-4" method="POST" action="/controllers/cart.ctl.php">
                             <button class="btn btn-primary w-100" type="submit">
                                 <i class="bi bi-cart-plus"></i>
                                 Thêm vào giỏ hàng

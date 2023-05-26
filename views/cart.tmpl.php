@@ -1,5 +1,5 @@
 <?php
-require_once(DIR_MODULES . 'shoppingCart.php');
+require_once('modules/cart.php');
 $cart = $_SESSION['cart'] ?? array();
 ?>
 
@@ -8,7 +8,7 @@ $cart = $_SESSION['cart'] ?? array();
         <section class="col-lg-8">
             <?php
             foreach ($cart as $prod) {
-                include(DIR_VIEWS . 'cartItem.partial.php');
+                include('views/cartItem.partial.php');
             }
             ?>
         </section>
