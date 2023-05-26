@@ -44,44 +44,37 @@
                         <div id="collapseTwo" class="accordion-collapse collapse">
                             <div class="accordion-body">
                                 <div>
+                                    <input class="form-check-input" type="radio" name="lower_price" value="500000">
+                                    <label class="form-check-label">
+                                        Trên 500.000 VNĐ
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <input class="form-check-input" type="radio" name="lower_price" value="1000000">
+                                    <label class="form-check-label">
+                                        Trên 1 triệu VNĐ
+                                    </label>
+                                </div>
+
+                                <div>
                                     <input class="form-check-input" type="radio" name="lower_price" value="2000000">
                                     <label class="form-check-label">
-                                        Trên 2 triệu
+                                        Trên 2 triệu VNĐ
                                     </label>
                                 </div>
 
                                 <div>
                                     <input class="form-check-input" type="radio" name="lower_price" value="3000000">
                                     <label class="form-check-label">
-                                        Trên 3 triệu
+                                        Trên 3 triệu VNĐ
                                     </label>
                                 </div>
 
                                 <div>
-                                    <input class="form-check-input" type="radio" name="lower_price" value="5000000">
+                                    <input class="form-check-input" type="radio" name="lower_price" value="4000000">
                                     <label class="form-check-label">
-                                        Trên 5 triệu
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <input class="form-check-input" type="radio" name="lower_price" value="10000000">
-                                    <label class="form-check-label">
-                                        Trên 10 triệu
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <input class="form-check-input" type="radio" name="lower_price" value="20000000">
-                                    <label class="form-check-label">
-                                        Trên 20 triệu
-                                    </label>
-                                </div>
-
-                                <div>
-                                    <input class="form-check-input" type="radio" name="lower_price" value="30000000">
-                                    <label class="form-check-label">
-                                        Trên 30 triệu
+                                        Trên 4 triệu VNĐ
                                     </label>
                                 </div>
                             </div>

@@ -64,7 +64,7 @@ $productCard = '
 
 <div class="container">
     <div class="row mt-5">
-        <h2 class="list-product-title">Điện thoại</h2>
+        <h2 class="list-product-title">Ấm chén bát tràng</h2>
         <div class="product-group">
             <div class="row">
                 <?php
@@ -77,7 +77,7 @@ $productCard = '
     </div>
 
     <div class="row mt-5">
-        <h2 class="list-product-title">Tablet</h2>
+        <h2 class="list-product-title">Bình hút tài lộc</h2>
         <div class="product-group">
             <div class="row">
                 <?php
@@ -90,7 +90,7 @@ $productCard = '
     </div>
 
     <div class="row mt-5">
-        <h2 class="list-product-title">Laptop</h2>
+        <h2 class="list-product-title">Tranh gốm sứ</h2>
         <div class="product-group">
             <div class="row">
                 <?php
@@ -103,12 +103,10 @@ $productCard = '
     </div>
 
     <div class="row mt-5">
-        <h2 class="list-product-title">Máy lạnh</h2>
+        <h2 class="list-product-title">Bộ đồ thờ cúng</h2>
         <div class="product-group">
             <div class="row">
                 <?php
-                //                $acs = $indexController->getFourProducts(4);
-
                 foreach ($acs as $ac) {
                     echo sprintf($productCard, $ac['url'], $ac['name'], number_format($ac['price']), $ac['id']);
                 }
@@ -118,12 +116,10 @@ $productCard = '
     </div>
 
     <div class="row mt-5">
-        <h2 class="list-product-title">Tủ lạnh</h2>
+        <h2 class="list-product-title">Đèn dầu thờ</h2>
         <div class="product-group">
             <div class="row">
                 <?php
-                //                $fridges = $indexController->getFourProducts(5);
-
                 foreach ($fridges as $fridge) {
                     echo sprintf($productCard, $fridge['url'], $fridge['name'], number_format($fridge['price']), $fridge['id']);
                 }
@@ -133,12 +129,10 @@ $productCard = '
     </div>
 
     <div class="row mt-5">
-        <h2 class="list-product-title">Máy giặt</h2>
+        <h2 class="list-product-title">Cốc, tách</h2>
         <div class="product-group">
             <div class="row">
                 <?php
-                //                $washers = $indexController->getFourProducts(6);
-
                 foreach ($washers as $washer) {
                     echo sprintf($productCard, $washer['url'], $washer['name'], number_format($washer['price']), $washer['id']);
                 }
