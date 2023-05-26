@@ -81,7 +81,8 @@ table {
   font-size: 1.75rem;
   color: black;
   margin-right: 25px;
-  font-family: SamsungSharpSans;
+  font-weight: bold;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 .nav-link {
