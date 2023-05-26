@@ -6,7 +6,7 @@ function displayAlert($message, $color)
 }
 
 $msg = $_GET['msg'] ?? "";
-if (!empty($msg)) {
+if ($msg != "") {
     switch ($msg) {
         case 'done':
             echo (displayAlert('Đăng ký thành công', 'alert-success'));

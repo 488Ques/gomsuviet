@@ -1,10 +1,10 @@
 <?php
-require_once(DIR_MODULES . 'helpers.php');
+require_once('modules/helpers.php');
 ?>
 
 <section class="container-fluid mt-4">
     <?php
-    include_once(DIR_VIEWS . 'msg.php');
+    include_once('views/msg.php');
     ?>
 
     <form class="row justify-content-center mx-auto" style="max-width: 40%;" action="/controllers/login.ctl.php" method="POST">

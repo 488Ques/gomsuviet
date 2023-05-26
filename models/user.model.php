@@ -4,7 +4,7 @@ require_once(DIR_DTOS . 'user.php');
 
 class userModel
 {
-    protected $db;
+    protected PDO $db;
 
     public function __construct($db)
     {
@@ -37,7 +37,7 @@ class userModel
         );
     }
 
-    public function login($username, $password)
+    public function login($username, $password): bool
     {
         $stmt = $this->db->prepare('SELECT COUNT(*) FROM user WHERE username = ? AND password = PASSWORD(?) AND deleted_at IS NULL');
         $stmt->execute([$username, $password]);
@@ -45,7 +45,7 @@ class userModel
         return $stmt->fetchColumn();
     }
 
-    // Check if an username exists (Including deleted ones)
+    // Check if a username exists (Including deleted ones)
     public function exist($username)
     {
         $stmt = $this->db->prepare('SELECT id FROM user WHERE username = ?');
