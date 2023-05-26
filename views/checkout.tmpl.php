@@ -1,5 +1,5 @@
 <?php
-require_once(DIR_MODULES . 'cart.php');
+require_once('modules/cart.php');
 $cart = $_SESSION['cart'];
 ?>
 
@@ -26,13 +26,13 @@ $cart = $_SESSION['cart'];
 
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Tổng cộng (VNĐ)</span>
-                    <strong><?php echo number_format(sumPriceCart()); ?> VNĐ</strong>
+                    <strong><?php echo number_format(sumPriceCart() ?? 0); ?> VNĐ</strong>
                 </li>
             </ul>
         </div>
 
         <div class="col-md-7 col-lg-8">
-            <?php include_once(DIR_VIEWS . 'msg.php'); ?>
+            <?php include_once('views/msg.php'); ?>
 
             <h4 class="mb-3">Chọn địa chỉ nhận hàng</h4>
             <form method="POST" action="/controllers/checkout.ctl.php" class="needs-validation" novalidate="">

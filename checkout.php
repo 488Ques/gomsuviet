@@ -1,7 +1,4 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/include_path.php');
+require_once('controllers/checkoutView.ctl.php');
 
-$title = 'Thanh toán';
-$template = DIR_VIEWS . 'checkout.tmpl.php';
-
-require_once(DIR_VIEWS . 'layout.php');
+CheckoutViewController::Render();
