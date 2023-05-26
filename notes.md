@@ -12,8 +12,11 @@
 - Đánh giá sản phẩm: Người mua có thể đánh giá sản phẩm đã đặt.
 
 ### TODO:
-- Làm đánh giá sản phẩm của người mua
+- Sửa lại danh mục sản phẩm
+- Sửa lại tag
+- Sửa lại carousel của home page
 - Làm thanh toán bằng ví MOMO hoặc sử dụng các API thanh toán khác (Low = Không bắt buộc)
+- Làm đánh giá sản phẩm của người mua (Low)
 - Làm lại phần lọc sản phẩm theo tag (Low)
 ---
 - Làm phần đăng ký tài khoản của người bán
