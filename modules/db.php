@@ -1,7 +1,7 @@
 <?php
 
 const HOST = 'localhost';
-const DB = 'db_electronicshop';
+const DB = 'db_gomsuviet';
 const USERNAME = 'root';
 const PASSWORD = 'root';
 const CHARSET = 'utf8mb4';
