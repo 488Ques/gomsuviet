@@ -21,7 +21,7 @@ class SearchController {
     {
         self::init();
 
-        $tags = $_GET['tag'] ?? 1; // An array of tag ID numbers
+        $tags = $_GET['tag'] ?? [1]; // An array of tag ID numbers
 
         $productName = null;
         if (isset($_GET['product_name'])) {
