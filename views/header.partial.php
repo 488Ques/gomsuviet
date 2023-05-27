@@ -28,12 +28,12 @@ require_once('modules/cart.php');
                         Danh mục sản phẩm
                     </div>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/search.php?tag[]=1">Điện thoại</a></li>
-                        <li><a class="dropdown-item" href="/search.php?tag[]=2">Tablet</a></li>
-                        <li><a class="dropdown-item" href="/search.php?tag[]=3">Laptop</a></li>
-                        <li><a class="dropdown-item" href="/search.php?tag[]=4">Máy lạnh</a></li>
-                        <li><a class="dropdown-item" href="/search.php?tag[]=5">Tủ lạnh</a></li>
-                        <li><a class="dropdown-item" href="/search.php?tag[]=6">Máy giặt</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=1">Ấm chén bát tràng</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=2">Bình hút tài lộc</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=3">Tranh gốm sứ</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=4">Bộ đồ thờ cúng</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=5">Đèn dầu thờ</a></li>
+                        <li><a class="dropdown-item" href="/search.php?tag[]=6">Cốc, tách</a></li>
                     </ul>
                 </li>
 
