@@ -4,6 +4,27 @@ require_once('../modules/db.php');
 require_once('../models/user.model.php');
 require_once('../modules/helpers.php');
 
+const DUPLICATE = 'duplicate';
+const INVALID = 'invalid';
+
+function buildLocationPath(string $msgStatus): string
+{
+    $locPath = 'Location: /register.php?msg=%s&username=%s&first_name=%s&last_name=%s&email_address=%s';
+    global $username;
+    global $first_name;
+    global $last_name;
+    global $email_address;
+
+    return sprintf(
+        $locPath,
+        $msgStatus,
+        $username,
+        $first_name,
+        $last_name,
+        $email_address,
+    );
+}
+
 $userModel = new userModel(DB());
 
 $username = $_POST['username'];
@@ -20,37 +41,16 @@ if (!empties($username, $password, $email_address)) {
 
     if ($valid) {
         if ($userModel->exist($username)) {
-            $loc = sprintf(
-                'Location: /register.php?msg=duplicate&username=%s&first_name=%s&last_name=%s&email_address=%s',
-                $username,
-                $first_name,
-                $last_name,
-                $email_address,
-            );
-            header($loc);
+            header(buildLocationPath(DUPLICATE));
         } else {
             $userModel->insert($username, $password, $first_name, $last_name, $email_address);
             header('Location: /register.php?msg=done');
         }
     } else {
-        $loc = sprintf(
-            'Location: /register.php?msg=invalid&username=%s&first_name=%s&last_name=%s&email_address=%s',
-            $username,
-            $first_name,
-            $last_name,
-            $email_address
-        );
-        header($loc);
+        header(buildLocationPath(INVALID));
     }
 } else {
-    $loc = sprintf(
-        'Location: /register.php?msg=invalid&username=%s&first_name=%s&last_name=%s&email_address=%s',
-        $username,
-        $first_name,
-        $last_name,
-        $email_address
-    );
-    header($loc);
+    header(buildLocationPath(INVALID));
 }
 
 exit();
