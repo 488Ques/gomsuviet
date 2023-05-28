@@ -1,5 +1,5 @@
 <?php
-require_once('models/DTOs/merchant.php');
+require_once('../models/DTOs/merchant.php');
 
 class merchantModel {
     protected PDO $db;
