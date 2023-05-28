@@ -50,8 +50,9 @@ require_once('modules/helpers.php');
                     <input type="submit" class="btn btn-primary w-100" value="Đăng kí">
                 </form>
             </div>
+
             <div class="tab-pane fade" id="merchant">
-                <form action="/controllers/TODO"
+                <form action="/controllers/merchantRegister.ctl.php"
                       method="POST">
                     <div class="mb-3">
                         <label class="form-label">Username <span class="text-danger fw-bold">*</span></label>
