@@ -1,12 +1,11 @@
-
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 07, 2022 at 06:57 PM
--- Server version: 10.9.3-MariaDB
--- PHP Version: 8.1.12
+-- Host: 127.0.0.1
+-- Generation Time: May 28, 2023 at 10:05 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -25,13 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `merchant`
+--
+
+CREATE TABLE `merchant` (
+  `id` int(4) NOT NULL,
+  `username` varchar(256) NOT NULL,
+  `password` text NOT NULL,
+  `first_name` text DEFAULT NULL,
+  `last_name` text DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `email_address` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `merchant`
+--
+
+INSERT INTO `merchant` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `email_address`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 'haha', '*85D0F19E5598AC04AC7B3FCF5383247D28FB59EF', 'ha', 'ha', 'test', 'abc@haha.com', '2023-05-28 19:27:55', '2023-05-28 19:27:55', NULL),
+(2, 'test', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29', 'name', 'test', 'test address', 'test_email@testing.com', '2023-05-28 19:55:31', '2023-05-28 19:55:31', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
   `id` int(4) NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` text NOT NULL,
+  `description` text DEFAULT NULL,
   `price` int(9) NOT NULL COMMENT 'VND',
   `specs_id` int(4) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -43,60 +69,61 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `specs_id`, `created_at`, `modified_at`, `deleted_at`) VALUES 
-(1, 'Bộ ấm trà Bát Tràng men xanh cổ vịt Vinh hoa Phú Quý', NULL, '450000', 1, '2022-10-24 07:59:35', '2023-05-25 20:38:47', NULL), 
-(2, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hạ Sen Chuồn', NULL, '550000', 2, '2022-10-24 08:02:38', '2022-11-08 01:02:14', NULL), 
-(3, 'Bộ ấm trà Bát Tràng Vinh Hoa Phú Quý men đen bóng', NULL, '590000', 3, '2022-10-24 08:04:32', '2022-11-08 01:07:43', NULL), 
-(4, 'Bộ ấm chén Bát Tràng men kem vẽ tay Phú Quý đào hồng', NULL, '490000', 4, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(5, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hoa Đại Minh Long', NULL, '400000', 5, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(6, 'Bộ ấm trà Bát Tràng cao cấp men đen bóng Thuận Buồm Xuôi Gió', NULL, '500000', 6, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(7, 'Bộ ấm chén uống trà khắc nổi hoa cổ', NULL, '500000', 7, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(8, 'Bộ ấm chén uống trà khắc nổi hoa cổ dáng cao', NULL, '600000', 8, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(9, 'Bộ ấm chén Bát Tràng vẽ hoa đào men kem', NULL, '490000', 9, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(10, 'Bộ ấm chén Bát Tràng hướng thiện vẽ hoa sen đầy đủ phụ kiện', NULL, '590000', 10, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(11, 'Ấm chén Bát Tràng men kem hoa đào xanh dáng vuông đầy đủ phụ kiện', NULL, '890000', 11, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(12, 'Ấm chén Bát Tràng men kem hoa sen đỏ dáng quả hồng', NULL, '690000', 12, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(13, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, '1500000', 13, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(14, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, '1500000', 14, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(15, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, '1500000', 15, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(16, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, '1500000', 16, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(17, 'Bình tài lộc vẽ vàng Công Thành Danh Toại Hạnh Phúc Bình An', NULL, '2900000', 17, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(18, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen', NULL, '2900000', 18, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(19, 'Bình hút lộc vẽ vàng Thuận Buồm Xuôi Gió Công Danh Phú Quý', NULL, '2900000', 19, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(20, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen 30cm', NULL, '2900000', 20, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(21, 'Tranh tứ quý men màu đắp nổi Bát Tràng Tùng Cúc Trúc Mai 116x55cm', NULL, '5000000', 21, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(22, 'Tranh tứ quý Bát Tràng men màu trơn Tùng Cúc Trúc Mai vẽ kỹ 115x50cm', NULL, '6000000', 22, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(23, 'Tranh tứ quý đắp nổi khung gỗ thông 100x50cm', NULL, '3000000', 23, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(24, 'Tranh sứ Bát Tràng vẽ cửu ngư đồ cá chép hoa sen 95x55cm', NULL, '1000000', 24, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(25, 'Tranh sứ cửu ngư quần hội 64cm x 98cm', NULL, '1000000', 25, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(26, 'Tranh tứ quý men trơn Bát Tràng Tùng Cúc Trúc Đào 80x42cm', NULL, '3900000', 26, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(27, 'Tranh tứ quý men lam Tùng Cúc Trúc Mai 98x48cm', NULL, '4500000', 27, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(28, 'Tranh cá chép trông trăng men lam đắp nổi 85x42cm', NULL, '1500000', 28, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(29, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m53', NULL, '3700000', 29, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(30, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m75', NULL, '4400000', 30, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(31, 'Bộ đồ thờ Bát Tràng men ngọc vẽ vàng 24k đầy đủ', NULL, '21000000', 31, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(32, 'Bộ đồ thờ men xanh ngọc cho bàn thờ chung cư', NULL, '1900000', 32, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(33, 'Bộ đồ thờ men rạn cho ban thờ thần tài 56', NULL, '2800000', 33, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(34, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi hoa sen', NULL, '3900000', 34, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(35, 'Bộ tam sự lư hương đỉnh hạc chân đồng cao 48cm', NULL, '9000000', 35, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(36, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi rồng ban thờ 1m53', NULL, '000000', 36, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(37, 'Đèn dầu men lam vẽ hoa sen dáng quả lê to', NULL, '890000', 37, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(38, 'Đèn dầu men lam vẽ hoa sen dáng trần', NULL, '800000', 38, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(39, 'Đèn dầu bát nắp sen xanh cỡ lớn', NULL, '1200000', 39, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(40, 'Đèn dầu men lam vẽ cổ đồ dáng vai vuông', NULL, '780000', 40, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(41, 'Đèn dầu men rạn vẽ chữ dáng bầu', NULL, '6900000', 41, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(42, 'Đèn dầu men rạn vẽ chữ dáng trần', NULL, '6900000', 42, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(43, 'Đèn dầu men rạn vẽ đồng quê dáng bát úp', NULL, '800000', 43, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(44, 'Đèn dầu men lam dáng đĩa', NULL, '840000', 44, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(45, 'Bộ tách cafe Bát Tràng vẽ tay Hoa dây', NULL, '350000', 45, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(46, 'Bộ tách cafe Bát Tràng vẽ tay chuồn chuồn', NULL, '350000', 46, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(47, 'Bộ tách cafe Bát Tràng vẽ tay cá đàn', NULL, '350000', 47, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(48, 'Bộ tách cafe Bát Tràng vẽ tay chim hạc', NULL, '350000', 48, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(49, 'Bộ tách cafe Bát Tràng vẽ tay cherry', NULL, '350000', 49, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(50, 'Bộ tách cafe Bát Tràng vẽ tay cá 3 màu', NULL, '350000', 50, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(51, 'Bộ tách cafe Bát Tràng vẽ tay cá xương', NULL, '350000', 51, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(52, 'Bộ tách cafe Bát Tràng vẽ tay bồ công anh tím', NULL, '350000', 52, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL);
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `specs_id`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 'Bộ ấm trà Bát Tràng men xanh cổ vịt Vinh hoa Phú Quý', NULL, 450000, 1, '2022-10-24 07:59:35', '2023-05-25 20:38:47', NULL),
+(2, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hạ Sen Chuồn', NULL, 550000, 2, '2022-10-24 08:02:38', '2022-11-08 01:02:14', NULL),
+(3, 'Bộ ấm trà Bát Tràng Vinh Hoa Phú Quý men đen bóng', NULL, 590000, 3, '2022-10-24 08:04:32', '2022-11-08 01:07:43', NULL),
+(4, 'Bộ ấm chén Bát Tràng men kem vẽ tay Phú Quý đào hồng', NULL, 490000, 4, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(5, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hoa Đại Minh Long', NULL, 400000, 5, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(6, 'Bộ ấm trà Bát Tràng cao cấp men đen bóng Thuận Buồm Xuôi Gió', NULL, 500000, 6, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(7, 'Bộ ấm chén uống trà khắc nổi hoa cổ', NULL, 500000, 7, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(8, 'Bộ ấm chén uống trà khắc nổi hoa cổ dáng cao', NULL, 600000, 8, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(9, 'Bộ ấm chén Bát Tràng vẽ hoa đào men kem', NULL, 490000, 9, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(10, 'Bộ ấm chén Bát Tràng hướng thiện vẽ hoa sen đầy đủ phụ kiện', NULL, 590000, 10, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(11, 'Ấm chén Bát Tràng men kem hoa đào xanh dáng vuông đầy đủ phụ kiện', NULL, 890000, 11, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(12, 'Ấm chén Bát Tràng men kem hoa sen đỏ dáng quả hồng', NULL, 690000, 12, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(13, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 13, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(14, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 14, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(15, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 15, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(16, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 16, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(17, 'Bình tài lộc vẽ vàng Công Thành Danh Toại Hạnh Phúc Bình An', NULL, 2900000, 17, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(18, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen', NULL, 2900000, 18, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(19, 'Bình hút lộc vẽ vàng Thuận Buồm Xuôi Gió Công Danh Phú Quý', NULL, 2900000, 19, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(20, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen 30cm', NULL, 2900000, 20, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(21, 'Tranh tứ quý men màu đắp nổi Bát Tràng Tùng Cúc Trúc Mai 116x55cm', NULL, 5000000, 21, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(22, 'Tranh tứ quý Bát Tràng men màu trơn Tùng Cúc Trúc Mai vẽ kỹ 115x50cm', NULL, 6000000, 22, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(23, 'Tranh tứ quý đắp nổi khung gỗ thông 100x50cm', NULL, 3000000, 23, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(24, 'Tranh sứ Bát Tràng vẽ cửu ngư đồ cá chép hoa sen 95x55cm', NULL, 1000000, 24, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(25, 'Tranh sứ cửu ngư quần hội 64cm x 98cm', NULL, 1000000, 25, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(26, 'Tranh tứ quý men trơn Bát Tràng Tùng Cúc Trúc Đào 80x42cm', NULL, 3900000, 26, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(27, 'Tranh tứ quý men lam Tùng Cúc Trúc Mai 98x48cm', NULL, 4500000, 27, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(28, 'Tranh cá chép trông trăng men lam đắp nổi 85x42cm', NULL, 1500000, 28, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(29, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m53', NULL, 3700000, 29, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(30, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m75', NULL, 4400000, 30, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(31, 'Bộ đồ thờ Bát Tràng men ngọc vẽ vàng 24k đầy đủ', NULL, 21000000, 31, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(32, 'Bộ đồ thờ men xanh ngọc cho bàn thờ chung cư', NULL, 1900000, 32, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(33, 'Bộ đồ thờ men rạn cho ban thờ thần tài 56', NULL, 2800000, 33, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(34, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi hoa sen', NULL, 3900000, 34, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(35, 'Bộ tam sự lư hương đỉnh hạc chân đồng cao 48cm', NULL, 9000000, 35, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(36, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi rồng ban thờ 1m53', NULL, 0, 36, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(37, 'Đèn dầu men lam vẽ hoa sen dáng quả lê to', NULL, 890000, 37, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(38, 'Đèn dầu men lam vẽ hoa sen dáng trần', NULL, 800000, 38, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(39, 'Đèn dầu bát nắp sen xanh cỡ lớn', NULL, 1200000, 39, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(40, 'Đèn dầu men lam vẽ cổ đồ dáng vai vuông', NULL, 780000, 40, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(41, 'Đèn dầu men rạn vẽ chữ dáng bầu', NULL, 6900000, 41, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(42, 'Đèn dầu men rạn vẽ chữ dáng trần', NULL, 6900000, 42, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(43, 'Đèn dầu men rạn vẽ đồng quê dáng bát úp', NULL, 800000, 43, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(44, 'Đèn dầu men lam dáng đĩa', NULL, 840000, 44, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(45, 'Bộ tách cafe Bát Tràng vẽ tay Hoa dây', NULL, 350000, 45, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(46, 'Bộ tách cafe Bát Tràng vẽ tay chuồn chuồn', NULL, 350000, 46, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(47, 'Bộ tách cafe Bát Tràng vẽ tay cá đàn', NULL, 350000, 47, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(48, 'Bộ tách cafe Bát Tràng vẽ tay chim hạc', NULL, 350000, 48, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(49, 'Bộ tách cafe Bát Tràng vẽ tay cherry', NULL, 350000, 49, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(50, 'Bộ tách cafe Bát Tràng vẽ tay cá 3 màu', NULL, 350000, 50, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(51, 'Bộ tách cafe Bát Tràng vẽ tay cá xương', NULL, 350000, 51, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
+(52, 'Bộ tách cafe Bát Tràng vẽ tay bồ công anh tím', NULL, 350000, 52, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL);
 
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `producttag_map`
@@ -228,7 +255,7 @@ INSERT INTO `producttag_map` (`product_id`, `tag_id`, `created_at`, `modified_at
 
 CREATE TABLE `product_image` (
   `id` int(4) NOT NULL,
-  `url` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` text NOT NULL,
   `product_id` int(4) NOT NULL,
   `is_thumbnail` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -237,26 +264,25 @@ CREATE TABLE `product_image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
-
---
 -- Dumping data for table `product_image`
 --
-INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created_at`, `modified_at`, `deleted_at`) VALUES 
-(1, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-6_30032023093827.jpg', 1, 1, '2022-10-24 09:23:10', '2023-05-26 18:31:55', NULL), 
-(2, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-2_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL), 
-(3, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-1_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL), 
-(4, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-5_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL), 
-(5, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon_18042023092247.jpg', 2, 1, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL), 
-(6, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-1_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL), 
-(7, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-2_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL), 
-(8, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-3_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL), 
+
+INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-6_30032023093827.jpg', 1, 1, '2022-10-24 09:23:10', '2023-05-26 18:31:55', NULL),
+(2, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-2_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL),
+(3, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-1_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL),
+(4, 'https://gomtruongan.vn/uploads/products/27052022033113/bo-am-tra-bat-trang-vinh-hoa-phu-quy-xanh-co-vit-day-du-5_30032023093736.jpg', 1, 0, '2022-10-24 09:23:10', '2022-10-24 09:23:10', NULL),
+(5, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon_18042023092247.jpg', 2, 1, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL),
+(6, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-1_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL),
+(7, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-2_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL),
+(8, 'https://gomtruongan.vn/uploads/products/18042023092247/bo-am-chen-bat-trang-men-kem-ve-tay-ha-sen-chuon-3_18042023092247.jpg', 2, 0, '2022-11-03 21:04:59', '2022-11-03 21:04:59', NULL),
 (9, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong_30032023100552.jpg', 3, 1, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL),
-(10, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(2)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL), 
-(11, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(3)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL), 
-(12, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(4)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL), 
-(13, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong-1_18042023094522.jpg', 4, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL), 
-(14, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong_18042023094522.jpg', 4, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL), 
-(15, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong-2_18042023092631.jpg', 4, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL), 
+(10, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(2)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL),
+(11, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(3)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL),
+(12, 'https://gomtruongan.vn/uploads/products/05052022084329/bo-am-tra-bat-trang-vinh-hoa-phu-quy-men-den-bong%20(4)_30032023100552.jpg', 3, 0, '2022-11-05 21:20:14', '2022-11-05 21:20:14', NULL),
+(13, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong-1_18042023094522.jpg', 4, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
+(14, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong_18042023094522.jpg', 4, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
+(15, 'https://gomtruongan.vn/uploads/products/18042023092631/bo-am-chen-bat-trang-men-kem-ve-tay-phu-quy-dao-hong-2_18042023092631.jpg', 4, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (16, 'https://gomtruongan.vn/uploads/products/18042023093311/bo-am-chen-bat-trang-men-kem-ve-tay-hoa-dai-minh-long_18042023093311.jpg', 5, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (17, 'https://gomtruongan.vn/uploads/products/18042023093311/bo-am-chen-bat-trang-men-kem-ve-tay-hoa-dai-minh-long-1_18042023093311.jpg', 5, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (18, 'https://gomtruongan.vn/uploads/products/18042023093311/bo-am-chen-bat-trang-men-kem-ve-tay-hoa-dai-minh-long-2_18042023093311.jpg', 5, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
@@ -316,7 +342,6 @@ INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created
 (72, 'https://gomtruongan.vn/uploads/products/22052020045701/tranh-tu-quy-men-tron-bat-trang-tung-cuc-truc-dao-80x42cm-1_22052020045717.jpg', 26, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (73, 'https://gomtruongan.vn/uploads/products/22052020045934/tranh-tu-quy-men-lam-tung-cuc-truc-mai-98x48cm_22052020045934.jpg', 27, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (74, 'https://gomtruongan.vn/uploads/products/22052020045934/tranh-tu-quy-men-lam-tung-cuc-truc-mai-98x48cm-1_22052020045950.jpg', 27, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
-
 (75, 'https://gomtruongan.vn/uploads/products/23052020110658/tranh-ca-chep-trong-trang-men-tram-dap-noi-85x42cm_23052020110658.jpg', 28, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (76, 'https://gomtruongan.vn/uploads/products/23052020110658/tranh-ca-chep-trong-trang-men-tram-dap-noi-85x42cm-1_23052020110658.jpg', 28, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (77, 'https://gomtruongan.vn/uploads/products/25012021092024/bo-do-tho-men-xanh-ngoc-cho-ban-tho-1m53_25012021092024.jpg', 29, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
@@ -336,7 +361,6 @@ INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created
 (91, 'https://gomtruongan.vn/uploads/products/07082020090315/bo-do-tho-bat-trang-men-ran-dap-noi-rong-ban-tho-153m_07082020090315.jpg', 36, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (92, 'https://gomtruongan.vn/uploads/products/07082020090315/bo-do-tho-bat-trang-men-ran-dap-noi-rong-ban-tho-153m-1_07082020090329.jpg', 36, 0, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (93, 'https://gomtruongan.vn/uploads/products/20062021091945/den-dau-men-lam-ve-hoa-sen-dang-qua-le-to_20062021091945.jpg', 37, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
-
 (94, 'https://gomtruongan.vn/uploads/products/20062021092222/den-dau-men-lam-ve-hoa-sen-dang-tran_20062021092222.jpg', 38, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (95, 'https://gomtruongan.vn/uploads/products/01062021090123/den-dau-bat-nap-sen-xanh-co-lon_01062021090123.jpg', 39, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (96, 'https://gomtruongan.vn/uploads/products/15062020103446/den-dau-men-lam-ve-co-do-dang-vai-vuong_15062020103446.jpg', 40, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
@@ -353,8 +377,11 @@ INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created
 (107, 'https://gomtruongan.vn/uploads/products/10112021093910/bo-tach-cafe-bat-trang-ve-tay-ca-xuong_10112021093910.jpg', 51, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL),
 (108, 'https://gomtruongan.vn/uploads/products/10112021093744/bo-tach-cafe-bat-trang-ve-tay-bo-cong-anh-tim_10112021093744.jpg', 52, 1, '2022-11-05 21:30:24', '2022-11-05 21:30:24', NULL);
 
+-- --------------------------------------------------------
 
-
+--
+-- Table structure for table `product_specs`
+--
 
 CREATE TABLE `product_specs` (
   `id` int(4) NOT NULL,
@@ -422,7 +449,6 @@ INSERT INTO `product_specs` (`id`, `specs`, `created_at`, `modified_at`, `delete
 (51, '{\"Loại sản phẩm:\":\" Tách cafe \",\"Màu sắc:\":\" Vàng \",\"Số món:\":\" 4 \",\"Sản phẩm bao gồm:\":\" 2 tách, 2 đĩa kê, 2 thìa sứ \",\"Hoạ tiết:\":\"  Cá xương\"}', '2022-11-07 18:01:53', '2022-11-07 18:01:53', NULL),
 (52, '{\"Loại sản phẩm:\":\" Tách cafe \",\"Màu sắc:\":\" Vàng \",\"Số món:\":\" 4 \",\"Sản phẩm bao gồm:\":\" 2 tách, 2 đĩa kê, 2 thìa sứ \",\"Hoạ tiết:\":\"  Bồ công anh tím\"}', '2022-11-07 18:01:53', '2022-11-07 18:01:53', NULL);
 
-
 -- --------------------------------------------------------
 
 --
@@ -431,8 +457,8 @@ INSERT INTO `product_specs` (`id`, `specs`, `created_at`, `modified_at`, `delete
 
 CREATE TABLE `product_tag` (
   `id` int(4) NOT NULL,
-  `name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` text NOT NULL,
+  `description` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -453,7 +479,6 @@ INSERT INTO `product_tag` (`id`, `name`, `description`, `created_at`, `modified_
 (8, 'Đồ thờ', NULL, '2022-10-24 00:46:07', '2022-10-24 00:46:26', NULL),
 (9, 'Trang trí', NULL, '2022-10-24 00:46:07', '2022-10-24 00:46:26', NULL);
 
-
 -- --------------------------------------------------------
 
 --
@@ -462,11 +487,11 @@ INSERT INTO `product_tag` (`id`, `name`, `description`, `created_at`, `modified_
 
 CREATE TABLE `user` (
   `id` int(4) NOT NULL,
-  `username` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `first_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(256) NOT NULL,
+  `password` text NOT NULL,
+  `first_name` text DEFAULT NULL,
+  `last_name` text DEFAULT NULL,
+  `email_address` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -482,6 +507,13 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `merchant`
+--
+ALTER TABLE `merchant`
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD UNIQUE KEY `IDX_username` (`username`);
 
 --
 -- Indexes for table `product`
@@ -526,6 +558,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `merchant`
+--
+ALTER TABLE `merchant`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
