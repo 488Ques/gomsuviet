@@ -1,7 +1,9 @@
 <?php
+
 class product
 {
     var $id;
+    var $merchant_id;
     var $name;
     var $description;
     var $price;
@@ -10,23 +12,29 @@ class product
     var $modified_at;
     var $deleted_at;
 
-    function __construct(
-        $_id,
-        $_name,
-        $_description,
-        $_price,
-        $_specs_id,
-        $_created_at,
-        $_modified_at,
-        $_deleted_at
-    ) {
-        $this->id = $_id;
-        $this->name = $_name;
-        $this->description = $_description;
-        $this->price = $_price;
-        $this->specs_id = $_specs_id;
-        $this->created_at = $_created_at;
-        $this->modified_at = $_modified_at;
-        $this->deleted_at = $_deleted_at;
+    /**
+     * @param $id
+     * @param $merchant_id
+     * @param $name
+     * @param $description
+     * @param $price
+     * @param $specs_id
+     * @param $created_at
+     * @param $modified_at
+     * @param $deleted_at
+     */
+    public function __construct($id, $merchant_id, $name, $description, $price, $specs_id, $created_at, $modified_at, $deleted_at)
+    {
+        $this->id = $id;
+        $this->merchant_id = $merchant_id;
+        $this->name = $name;
+        $this->description = $description;
+        $this->price = $price;
+        $this->specs_id = $specs_id;
+        $this->created_at = $created_at;
+        $this->modified_at = $modified_at;
+        $this->deleted_at = $deleted_at;
     }
+
+
 }

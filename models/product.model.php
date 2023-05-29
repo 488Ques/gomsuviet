@@ -12,7 +12,7 @@ class productModel
 
     public function get($id): product
     {
-        $stmt = $this->db->prepare('SELECT id, name, description, price, specs_id, created_at, modified_at, deleted_at
+        $stmt = $this->db->prepare('SELECT id, merchant_id, name, description, price, specs_id, created_at, modified_at, deleted_at
          FROM product WHERE id = ? AND deleted_at IS NULL;');
 
         $stmt->execute([$id]);
@@ -21,6 +21,7 @@ class productModel
 
         return new product(
             $product['id'],
+            $product['merchant_id'],
             $product['name'],
             $product['description'],
             $product['price'],
@@ -51,10 +52,10 @@ class productModel
         while ($temp = $prepared->fetch()) {
             $prod = new product(
                 $temp['id'],
+                null,
                 $temp['name'],
                 $temp['description'],
                 $temp['price'],
-                $temp['discount_id'],
                 $temp['specs_id'],
                 $temp['created_at'],
                 $temp['modified_at'],
@@ -114,6 +115,7 @@ class productModel
         while ($temp = $prepared->fetch()) {
             $prod = new product(
                 $temp['id'],
+                null,
                 $temp['name'],
                 null,
                 $temp['price'],
