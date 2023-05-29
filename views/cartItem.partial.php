@@ -12,6 +12,7 @@
                 </a>
             </h3>
             <div class="pt-2"><?php echo number_format($prod['price']); ?> VNĐ</div>
+            <div>Merchant ID: <?php echo $prod['merchant_id'] ?></div>
         </div>
     </div>
 

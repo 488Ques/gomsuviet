@@ -9,6 +9,7 @@ if (!empty($action)) {
         case 'add':
             $prod = array(
                 'id' => $_POST['id'],
+                'merchant_id' => $_POST['merchant_id'],
                 'name' => $_POST['name'],
                 'price' => $_POST['price'],
                 'quantity' => $_POST['quantity'],

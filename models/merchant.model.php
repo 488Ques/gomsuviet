@@ -1,7 +1,8 @@
 <?php
-require_once('../models/DTOs/merchant.php');
+require_once('models/DTOs/merchant.php');
 
-class merchantModel {
+class merchantModel
+{
     protected PDO $db;
 
     public function __construct($db)

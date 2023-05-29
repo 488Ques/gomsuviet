@@ -43,6 +43,7 @@
 
                     <input type="hidden" value="add" name="action">
                     <input type="hidden" value="<?php echo $prod->id; ?>" name="id">
+                    <input type="hidden" value="<?php echo $prod->merchant_id; ?>" name="merchant_id">
                     <input type="hidden" value="<?php echo $prod->name; ?>" name="name">
                     <input type="hidden" value="<?php echo $prod->price; ?>" name="price">
                     <input type="hidden" value="1" name="quantity">
