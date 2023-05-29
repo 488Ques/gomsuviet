@@ -6,14 +6,15 @@ require_once('modules/cart.php');
     <div class="container">
         <a class="navbar-brand" href="/">Gốm Sứ Việt</a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 me-auto mb-lg-0">
                 <li class="nav-item">
                     <form class="d-flex" action="/search.php">
-                        <input type="text" name="product_name" class="form-control" placeholder="Nhập tên sản phẩm" />
+                        <input type="text" name="product_name" class="form-control" placeholder="Nhập tên sản phẩm"/>
                         <button class="btn btn-outline-primary ms-2">
                             <i class="bi bi-search"></i>
                         </button>
@@ -50,7 +51,9 @@ require_once('modules/cart.php');
                         <i class="bi bi-person-circle me-1"></i>
                         <?php
                         if (!empty($_SESSION['username'])) {
-                            echo $_SESSION['username'];;
+                            echo $_SESSION['username'];
+                        } else if (!empty($_SESSION['merchantUsername'])) {
+                            echo $_SESSION['merchantUsername'];
                         } else {
                             echo 'Tài khoản';
                         }
@@ -60,6 +63,8 @@ require_once('modules/cart.php');
                     <ul class="dropdown-menu">
                         <?php
                         if (!empty($_SESSION['username'])) {
+                            echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
+                        } else if (!empty($_SESSION['merchantUsername'])) {
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
                         } else {
                             echo '<li><a class="dropdown-item" href="/login.php">Đăng nhập</a></li>
