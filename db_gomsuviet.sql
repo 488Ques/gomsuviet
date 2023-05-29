@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2023 at 10:05 PM
+-- Generation Time: May 29, 2023 at 06:53 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,8 +45,12 @@ CREATE TABLE `merchant` (
 --
 
 INSERT INTO `merchant` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `email_address`, `created_at`, `modified_at`, `deleted_at`) VALUES
-(1, 'haha', '*85D0F19E5598AC04AC7B3FCF5383247D28FB59EF', 'ha', 'ha', 'test', 'abc@haha.com', '2023-05-28 19:27:55', '2023-05-28 19:27:55', NULL),
-(2, 'test', '*94BDCEBE19083CE2A1F959FD02F964C7AF4CFC29', 'name', 'test', 'test address', 'test_email@testing.com', '2023-05-28 19:55:31', '2023-05-28 19:55:31', NULL);
+(1, 'merchant1', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'An', 'Lê Văn', '88 Tân Sơn, Phường 15, Tân Bình, Thành phố Hồ Chí Minh, Vietnam', 'an9920@gmail.com', '2023-05-29 16:10:00', '2023-05-29 16:10:00', NULL),
+(2, 'merchant2', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Bình', 'Nguyễn Hữu', '72 Nguyễn Sỹ Sách, Phường 15, Tân Bình, Thành phố Hồ Chí Minh, Vietnam', 'binh_huu48@gmail.com', '2023-05-29 16:16:11', '2023-05-29 16:16:11', NULL),
+(3, 'merchant3', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Quỳnh', 'Hoàng Cẩm', '53 Trần Chánh Chiếu, Phường 14, Quận 5, Thành phố Hồ Chí Minh, Vietnam', 'quynh18892@gmail.com', '2023-05-29 16:25:34', '2023-05-29 16:25:34', NULL),
+(4, 'merchant4', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'My', 'Trần Thị', '187/21 Minh Phụng, Phường 9, Quận 6, Thành phố Hồ Chí Minh, Vietnam', 'thimy5665@gmail.com', '2023-05-29 16:29:55', '2023-05-29 16:29:55', NULL),
+(5, 'merchant5', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Tín', 'Trần Quốc', '187/21 Minh Phụng, Phường 9, Quận 6, Thành phố Hồ Chí Minh, Vietnam', 'tin4888@gmail.com', '2023-05-29 16:31:47', '2023-05-29 16:31:47', NULL),
+(6, 'merchant6', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Quỳnh', 'Phan Thị Cẩm', '204 Đ. Kênh Tân Hóa, Phú Trung, Tân Phú, Thành phố Hồ Chí Minh, Vietnam', 'camquynh29492@gmail.com', '2023-05-29 16:35:59', '2023-05-29 16:35:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -563,7 +567,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `merchant`
 --
 ALTER TABLE `merchant`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product`
