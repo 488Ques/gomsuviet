@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 06:53 PM
+-- Generation Time: May 29, 2023 at 08:56 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -60,6 +60,7 @@ INSERT INTO `merchant` (`id`, `username`, `password`, `first_name`, `last_name`,
 
 CREATE TABLE `product` (
   `id` int(4) NOT NULL,
+  `merchant_id` int(4) NOT NULL,
   `name` text NOT NULL,
   `description` text DEFAULT NULL,
   `price` int(9) NOT NULL COMMENT 'VND',
@@ -73,59 +74,59 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `price`, `specs_id`, `created_at`, `modified_at`, `deleted_at`) VALUES
-(1, 'Bộ ấm trà Bát Tràng men xanh cổ vịt Vinh hoa Phú Quý', NULL, 450000, 1, '2022-10-24 07:59:35', '2023-05-25 20:38:47', NULL),
-(2, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hạ Sen Chuồn', NULL, 550000, 2, '2022-10-24 08:02:38', '2022-11-08 01:02:14', NULL),
-(3, 'Bộ ấm trà Bát Tràng Vinh Hoa Phú Quý men đen bóng', NULL, 590000, 3, '2022-10-24 08:04:32', '2022-11-08 01:07:43', NULL),
-(4, 'Bộ ấm chén Bát Tràng men kem vẽ tay Phú Quý đào hồng', NULL, 490000, 4, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(5, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hoa Đại Minh Long', NULL, 400000, 5, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(6, 'Bộ ấm trà Bát Tràng cao cấp men đen bóng Thuận Buồm Xuôi Gió', NULL, 500000, 6, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(7, 'Bộ ấm chén uống trà khắc nổi hoa cổ', NULL, 500000, 7, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(8, 'Bộ ấm chén uống trà khắc nổi hoa cổ dáng cao', NULL, 600000, 8, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(9, 'Bộ ấm chén Bát Tràng vẽ hoa đào men kem', NULL, 490000, 9, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(10, 'Bộ ấm chén Bát Tràng hướng thiện vẽ hoa sen đầy đủ phụ kiện', NULL, 590000, 10, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(11, 'Ấm chén Bát Tràng men kem hoa đào xanh dáng vuông đầy đủ phụ kiện', NULL, 890000, 11, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(12, 'Ấm chén Bát Tràng men kem hoa sen đỏ dáng quả hồng', NULL, 690000, 12, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(13, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 13, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(14, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 14, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(15, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 15, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(16, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 16, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(17, 'Bình tài lộc vẽ vàng Công Thành Danh Toại Hạnh Phúc Bình An', NULL, 2900000, 17, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(18, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen', NULL, 2900000, 18, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(19, 'Bình hút lộc vẽ vàng Thuận Buồm Xuôi Gió Công Danh Phú Quý', NULL, 2900000, 19, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(20, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen 30cm', NULL, 2900000, 20, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(21, 'Tranh tứ quý men màu đắp nổi Bát Tràng Tùng Cúc Trúc Mai 116x55cm', NULL, 5000000, 21, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(22, 'Tranh tứ quý Bát Tràng men màu trơn Tùng Cúc Trúc Mai vẽ kỹ 115x50cm', NULL, 6000000, 22, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(23, 'Tranh tứ quý đắp nổi khung gỗ thông 100x50cm', NULL, 3000000, 23, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(24, 'Tranh sứ Bát Tràng vẽ cửu ngư đồ cá chép hoa sen 95x55cm', NULL, 1000000, 24, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(25, 'Tranh sứ cửu ngư quần hội 64cm x 98cm', NULL, 1000000, 25, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(26, 'Tranh tứ quý men trơn Bát Tràng Tùng Cúc Trúc Đào 80x42cm', NULL, 3900000, 26, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(27, 'Tranh tứ quý men lam Tùng Cúc Trúc Mai 98x48cm', NULL, 4500000, 27, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(28, 'Tranh cá chép trông trăng men lam đắp nổi 85x42cm', NULL, 1500000, 28, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(29, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m53', NULL, 3700000, 29, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(30, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m75', NULL, 4400000, 30, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(31, 'Bộ đồ thờ Bát Tràng men ngọc vẽ vàng 24k đầy đủ', NULL, 21000000, 31, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(32, 'Bộ đồ thờ men xanh ngọc cho bàn thờ chung cư', NULL, 1900000, 32, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(33, 'Bộ đồ thờ men rạn cho ban thờ thần tài 56', NULL, 2800000, 33, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(34, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi hoa sen', NULL, 3900000, 34, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(35, 'Bộ tam sự lư hương đỉnh hạc chân đồng cao 48cm', NULL, 9000000, 35, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(36, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi rồng ban thờ 1m53', NULL, 0, 36, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(37, 'Đèn dầu men lam vẽ hoa sen dáng quả lê to', NULL, 890000, 37, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(38, 'Đèn dầu men lam vẽ hoa sen dáng trần', NULL, 800000, 38, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(39, 'Đèn dầu bát nắp sen xanh cỡ lớn', NULL, 1200000, 39, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(40, 'Đèn dầu men lam vẽ cổ đồ dáng vai vuông', NULL, 780000, 40, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(41, 'Đèn dầu men rạn vẽ chữ dáng bầu', NULL, 6900000, 41, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(42, 'Đèn dầu men rạn vẽ chữ dáng trần', NULL, 6900000, 42, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(43, 'Đèn dầu men rạn vẽ đồng quê dáng bát úp', NULL, 800000, 43, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(44, 'Đèn dầu men lam dáng đĩa', NULL, 840000, 44, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(45, 'Bộ tách cafe Bát Tràng vẽ tay Hoa dây', NULL, 350000, 45, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(46, 'Bộ tách cafe Bát Tràng vẽ tay chuồn chuồn', NULL, 350000, 46, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(47, 'Bộ tách cafe Bát Tràng vẽ tay cá đàn', NULL, 350000, 47, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(48, 'Bộ tách cafe Bát Tràng vẽ tay chim hạc', NULL, 350000, 48, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(49, 'Bộ tách cafe Bát Tràng vẽ tay cherry', NULL, 350000, 49, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(50, 'Bộ tách cafe Bát Tràng vẽ tay cá 3 màu', NULL, 350000, 50, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(51, 'Bộ tách cafe Bát Tràng vẽ tay cá xương', NULL, 350000, 51, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL),
-(52, 'Bộ tách cafe Bát Tràng vẽ tay bồ công anh tím', NULL, 350000, 52, '2022-10-24 08:04:32', '2022-11-08 01:07:45', NULL);
+INSERT INTO `product` (`id`, `merchant_id`, `name`, `description`, `price`, `specs_id`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 1, 'Bộ ấm trà Bát Tràng men xanh cổ vịt Vinh hoa Phú Quý', NULL, 450000, 1, '2022-10-24 07:59:35', '2023-05-29 17:24:35', NULL),
+(2, 1, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hạ Sen Chuồn', NULL, 550000, 2, '2022-10-24 08:02:38', '2023-05-29 17:24:35', NULL),
+(3, 2, 'Bộ ấm trà Bát Tràng Vinh Hoa Phú Quý men đen bóng', NULL, 590000, 3, '2022-10-24 08:04:32', '2023-05-29 17:30:05', NULL),
+(4, 2, 'Bộ ấm chén Bát Tràng men kem vẽ tay Phú Quý đào hồng', NULL, 490000, 4, '2022-10-24 08:04:32', '2023-05-29 17:30:05', NULL),
+(5, 3, 'Bộ ấm chén Bát Tràng men kem vẽ tay Hoa Đại Minh Long', NULL, 400000, 5, '2022-10-24 08:04:32', '2023-05-29 17:31:49', NULL),
+(6, 3, 'Bộ ấm trà Bát Tràng cao cấp men đen bóng Thuận Buồm Xuôi Gió', NULL, 500000, 6, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(7, 4, 'Bộ ấm chén uống trà khắc nổi hoa cổ', NULL, 500000, 7, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(8, 4, 'Bộ ấm chén uống trà khắc nổi hoa cổ dáng cao', NULL, 600000, 8, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(9, 5, 'Bộ ấm chén Bát Tràng vẽ hoa đào men kem', NULL, 490000, 9, '2022-10-24 08:04:32', '2023-05-29 17:35:22', NULL),
+(10, 1, 'Bộ ấm chén Bát Tràng hướng thiện vẽ hoa sen đầy đủ phụ kiện', NULL, 590000, 10, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(11, 1, 'Ấm chén Bát Tràng men kem hoa đào xanh dáng vuông đầy đủ phụ kiện', NULL, 890000, 11, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(12, 3, 'Ấm chén Bát Tràng men kem hoa sen đỏ dáng quả hồng', NULL, 690000, 12, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(13, 2, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 13, '2022-10-24 08:04:32', '2023-05-29 17:30:05', NULL),
+(14, 2, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 14, '2022-10-24 08:04:32', '2023-05-29 17:30:05', NULL),
+(15, 3, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 15, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(16, 4, 'Bình hút lộc màu đỏ vẽ vàng Phúc Đức Tài Lộc 25cm', NULL, 1500000, 16, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(17, 4, 'Bình tài lộc vẽ vàng Công Thành Danh Toại Hạnh Phúc Bình An', NULL, 2900000, 17, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(18, 5, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen', NULL, 2900000, 18, '2022-10-24 08:04:32', '2023-05-29 17:35:22', NULL),
+(19, 5, 'Bình hút lộc vẽ vàng Thuận Buồm Xuôi Gió Công Danh Phú Quý', NULL, 2900000, 19, '2022-10-24 08:04:32', '2023-05-29 17:35:22', NULL),
+(20, 1, 'Bình hút lộc Bát Tràng vẽ vàng Cá Chép Hoa Sen 30cm', NULL, 2900000, 20, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(21, 1, 'Tranh tứ quý men màu đắp nổi Bát Tràng Tùng Cúc Trúc Mai 116x55cm', NULL, 5000000, 21, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(22, 3, 'Tranh tứ quý Bát Tràng men màu trơn Tùng Cúc Trúc Mai vẽ kỹ 115x50cm', NULL, 6000000, 22, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(23, 2, 'Tranh tứ quý đắp nổi khung gỗ thông 100x50cm', NULL, 3000000, 23, '2022-10-24 08:04:32', '2023-05-29 17:30:05', NULL),
+(24, 2, 'Tranh sứ Bát Tràng vẽ cửu ngư đồ cá chép hoa sen 95x55cm', NULL, 1000000, 24, '2022-10-24 08:04:32', '2023-05-29 17:30:06', NULL),
+(25, 3, 'Tranh sứ cửu ngư quần hội 64cm x 98cm', NULL, 1000000, 25, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(26, 4, 'Tranh tứ quý men trơn Bát Tràng Tùng Cúc Trúc Đào 80x42cm', NULL, 3900000, 26, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(27, 4, 'Tranh tứ quý men lam Tùng Cúc Trúc Mai 98x48cm', NULL, 4500000, 27, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(28, 5, 'Tranh cá chép trông trăng men lam đắp nổi 85x42cm', NULL, 1500000, 28, '2022-10-24 08:04:32', '2023-05-29 17:35:22', NULL),
+(29, 5, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m53', NULL, 3700000, 29, '2022-10-24 08:04:32', '2023-05-29 17:35:22', NULL),
+(30, 1, 'Bộ đồ thờ men xanh ngọc cho bàn thờ 1m75', NULL, 4400000, 30, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(31, 1, 'Bộ đồ thờ Bát Tràng men ngọc vẽ vàng 24k đầy đủ', NULL, 21000000, 31, '2022-10-24 08:04:32', '2023-05-29 17:27:51', NULL),
+(32, 3, 'Bộ đồ thờ men xanh ngọc cho bàn thờ chung cư', NULL, 1900000, 32, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(33, 2, 'Bộ đồ thờ men rạn cho ban thờ thần tài 56', NULL, 2800000, 33, '2022-10-24 08:04:32', '2023-05-29 17:30:06', NULL),
+(34, 2, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi hoa sen', NULL, 3900000, 34, '2022-10-24 08:04:32', '2023-05-29 17:30:06', NULL),
+(35, 3, 'Bộ tam sự lư hương đỉnh hạc chân đồng cao 48cm', NULL, 9000000, 35, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(36, 4, 'Bộ đồ thờ Bát Tràng men rạn đắp nổi rồng ban thờ 1m53', NULL, 0, 36, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(37, 4, 'Đèn dầu men lam vẽ hoa sen dáng quả lê to', NULL, 890000, 37, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(38, 6, 'Đèn dầu men lam vẽ hoa sen dáng trần', NULL, 800000, 38, '2022-10-24 08:04:32', '2023-05-29 17:39:29', NULL),
+(39, 6, 'Đèn dầu bát nắp sen xanh cỡ lớn', NULL, 1200000, 39, '2022-10-24 08:04:32', '2023-05-29 17:39:29', NULL),
+(40, 1, 'Đèn dầu men lam vẽ cổ đồ dáng vai vuông', NULL, 780000, 40, '2022-10-24 08:04:32', '2023-05-29 17:30:50', NULL),
+(41, 1, 'Đèn dầu men rạn vẽ chữ dáng bầu', NULL, 6900000, 41, '2022-10-24 08:04:32', '2023-05-29 17:30:50', NULL),
+(42, 3, 'Đèn dầu men rạn vẽ chữ dáng trần', NULL, 6900000, 42, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(43, 2, 'Đèn dầu men rạn vẽ đồng quê dáng bát úp', NULL, 800000, 43, '2022-10-24 08:04:32', '2023-05-29 17:30:06', NULL),
+(44, 2, 'Đèn dầu men lam dáng đĩa', NULL, 840000, 44, '2022-10-24 08:04:32', '2023-05-29 17:30:06', NULL),
+(45, 3, 'Bộ tách cafe Bát Tràng vẽ tay Hoa dây', NULL, 350000, 45, '2022-10-24 08:04:32', '2023-05-29 17:31:50', NULL),
+(46, 4, 'Bộ tách cafe Bát Tràng vẽ tay chuồn chuồn', NULL, 350000, 46, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(47, 4, 'Bộ tách cafe Bát Tràng vẽ tay cá đàn', NULL, 350000, 47, '2022-10-24 08:04:32', '2023-05-29 17:34:01', NULL),
+(48, 6, 'Bộ tách cafe Bát Tràng vẽ tay chim hạc', NULL, 350000, 48, '2022-10-24 08:04:32', '2023-05-29 17:39:29', NULL),
+(49, 6, 'Bộ tách cafe Bát Tràng vẽ tay cherry', NULL, 350000, 49, '2022-10-24 08:04:32', '2023-05-29 17:39:29', NULL),
+(50, 6, 'Bộ tách cafe Bát Tràng vẽ tay cá 3 màu', NULL, 350000, 50, '2022-10-24 08:04:32', '2023-05-29 17:39:29', NULL),
+(51, 6, 'Bộ tách cafe Bát Tràng vẽ tay cá xương', NULL, 350000, 51, '2022-10-24 08:04:32', '2023-05-29 17:39:30', NULL),
+(52, 6, 'Bộ tách cafe Bát Tràng vẽ tay bồ công anh tím', NULL, 350000, 52, '2022-10-24 08:04:32', '2023-05-29 17:39:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -524,7 +525,8 @@ ALTER TABLE `merchant`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_Product_Product_specs` (`specs_id`);
+  ADD KEY `FK_Product_Product_specs` (`specs_id`),
+  ADD KEY `FK_Product_Merchant` (`merchant_id`);
 
 --
 -- Indexes for table `producttag_map`
@@ -607,6 +609,7 @@ ALTER TABLE `user`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
+  ADD CONSTRAINT `FK_Product_Merchant` FOREIGN KEY (`merchant_id`) REFERENCES `merchant` (`id`),
   ADD CONSTRAINT `FK_Product_Product_specs` FOREIGN KEY (`specs_id`) REFERENCES `product_specs` (`id`);
 
 --
