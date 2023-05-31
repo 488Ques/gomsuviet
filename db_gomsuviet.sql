@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 08:56 PM
+-- Generation Time: May 31, 2023 at 07:51 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,6 +51,34 @@ INSERT INTO `merchant` (`id`, `username`, `password`, `first_name`, `last_name`,
 (4, 'merchant4', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'My', 'Trần Thị', '187/21 Minh Phụng, Phường 9, Quận 6, Thành phố Hồ Chí Minh, Vietnam', 'thimy5665@gmail.com', '2023-05-29 16:29:55', '2023-05-29 16:29:55', NULL),
 (5, 'merchant5', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Tín', 'Trần Quốc', '187/21 Minh Phụng, Phường 9, Quận 6, Thành phố Hồ Chí Minh, Vietnam', 'tin4888@gmail.com', '2023-05-29 16:31:47', '2023-05-29 16:31:47', NULL),
 (6, 'merchant6', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Quỳnh', 'Phan Thị Cẩm', '204 Đ. Kênh Tân Hóa, Phú Trung, Tân Phú, Thành phố Hồ Chí Minh, Vietnam', 'camquynh29492@gmail.com', '2023-05-29 16:35:59', '2023-05-29 16:35:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(4) NOT NULL,
+  `order_id` int(4) NOT NULL,
+  `product_id` int(4) NOT NULL,
+  `merchant_id` int(4) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `merchant_id`, `quantity`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 1, 14, 2, 1, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
+(2, 2, 1, 1, 3, '2023-05-31 17:18:41', '2023-05-31 17:18:41', NULL),
+(3, 3, 1, 1, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
+(4, 3, 2, 1, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
+(5, 3, 3, 2, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL);
 
 -- --------------------------------------------------------
 
@@ -385,6 +413,29 @@ INSERT INTO `product_image` (`id`, `url`, `product_id`, `is_thumbnail`, `created
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_order`
+--
+
+CREATE TABLE `product_order` (
+  `id` int(4) NOT NULL,
+  `user_id` int(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `product_order`
+--
+
+INSERT INTO `product_order` (`id`, `user_id`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 2, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
+(2, 2, '2023-05-31 17:18:41', '2023-05-31 17:18:41', NULL),
+(3, 2, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_specs`
 --
 
@@ -507,7 +558,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email_address`, `created_at`, `modified_at`, `deleted_at`) VALUES
-(1, 'abc', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', NULL, NULL, 'abc@xyz.com', '2022-11-06 16:14:58', '2022-11-06 16:14:58', NULL);
+(1, 'abc', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', NULL, NULL, 'abc@xyz.com', '2022-11-06 16:14:58', '2022-11-06 16:14:58', NULL),
+(2, 'user1', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Anh', 'Trần Quốc', 'anh66829@gmail.com', '2023-05-31 16:21:27', '2023-05-31 16:21:27', NULL);
 
 --
 -- Indexes for dumped tables
@@ -519,6 +571,15 @@ INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `em
 ALTER TABLE `merchant`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD UNIQUE KEY `IDX_username` (`username`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Order_items_Product_order` (`order_id`),
+  ADD KEY `FK_Order_items_Product` (`product_id`),
+  ADD KEY `FK_Order_items_Merchant` (`merchant_id`);
 
 --
 -- Indexes for table `product`
@@ -541,6 +602,13 @@ ALTER TABLE `producttag_map`
 ALTER TABLE `product_image`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_Product_image_Product` (`product_id`);
+
+--
+-- Indexes for table `product_order`
+--
+ALTER TABLE `product_order`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Product_order_User` (`user_id`);
 
 --
 -- Indexes for table `product_specs`
@@ -572,6 +640,12 @@ ALTER TABLE `merchant`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
@@ -582,6 +656,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `product_image`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+
+--
+-- AUTO_INCREMENT for table `product_order`
+--
+ALTER TABLE `product_order`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product_specs`
@@ -599,11 +679,19 @@ ALTER TABLE `product_tag`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `FK_Order_items_Merchant` FOREIGN KEY (`merchant_id`) REFERENCES `merchant` (`id`),
+  ADD CONSTRAINT `FK_Order_items_Product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `FK_Order_items_Product_order` FOREIGN KEY (`order_id`) REFERENCES `product_order` (`id`);
 
 --
 -- Constraints for table `product`
@@ -624,6 +712,12 @@ ALTER TABLE `producttag_map`
 --
 ALTER TABLE `product_image`
   ADD CONSTRAINT `FK_Product_image_Product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
+
+--
+-- Constraints for table `product_order`
+--
+ALTER TABLE `product_order`
+  ADD CONSTRAINT `FK_Product_order_User` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
