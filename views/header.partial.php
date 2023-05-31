@@ -41,7 +41,7 @@ require_once('modules/cart.php');
                 <li class="nav-item">
                     <a class="nav-link" href="/cart.php">
                         <i class="bi bi-cart-fill me-1"></i>
-                        Giỏ hàng (<?php echo sumProdCart() ? sumProdCart() : 0; ?>)
+                        Giỏ hàng (<?php echo Cart::sumCartQuantity() ? Cart::sumCartQuantity() : 0; ?>)
                     </a>
                 </li>
 

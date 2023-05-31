@@ -6,7 +6,7 @@ class productOrderModel
 
     public function __construct(PDO $db)
     {
-        $this->db->prepare('INSERT INTO ')
+        $this->db = $db;
     }
 
     /**
