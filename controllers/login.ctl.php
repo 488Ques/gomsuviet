@@ -10,8 +10,9 @@ $userModel = new userModel(DB());
 $username = $_POST['username'];
 $password = $_POST['password'];
 if (!empties($username, $password)) {
-    if ($userModel->login($username, $password)) {
-        $_SESSION['username'] = $username;
+    $user = $userModel->login($username, $password);
+    if ($user) {
+        $_SESSION['user'] = $user;
         header('Location: /');
     } else {
         header('Location: /login.php?msg=login-fail&username=' . $username);

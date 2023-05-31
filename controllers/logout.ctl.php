@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (!empty($_SESSION['username'])) {
-    unset($_SESSION['username']);
+if (!empty($_SESSION['user'])) {
+    unset($_SESSION['user']);
     header('Location: /');
 } else if (!empty($_SESSION['merchantUsername'])) {
     unset($_SESSION['merchantUsername']);

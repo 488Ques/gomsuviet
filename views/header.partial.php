@@ -50,8 +50,8 @@ require_once('modules/cart.php');
                     <a class="nav-link" href="#">
                         <i class="bi bi-person-circle me-1"></i>
                         <?php
-                        if (!empty($_SESSION['username'])) {
-                            echo $_SESSION['username'];
+                        if (!empty($_SESSION['user'])) {
+                            echo $_SESSION['user']['username'];
                         } else if (!empty($_SESSION['merchantUsername'])) {
                             echo $_SESSION['merchantUsername'];
                         } else {
@@ -62,7 +62,7 @@ require_once('modules/cart.php');
 
                     <ul class="dropdown-menu">
                         <?php
-                        if (!empty($_SESSION['username'])) {
+                        if (!empty($_SESSION['user'])) {
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
                         } else if (!empty($_SESSION['merchantUsername'])) {
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
