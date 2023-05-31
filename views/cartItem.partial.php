@@ -5,13 +5,13 @@
 <!-- Item-->
 <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
     <div class="d-block d-sm-flex align-items-center text-center text-sm-start">
-        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="<?php echo '/detail.php?id=' . $prod->id; ?>">
+        <a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="<?php echo '/detail.php?id=' . $prod->product_id; ?>">
             <img src="<?php echo $prod->url; ?>" alt="Product" width="160">
         </a>
 
         <div class="pt-2">
             <h3 class="mb-2">
-                <a class="text-decoration-none" href="<?php echo '/detail.php?id=' . $prod->id; ?>">
+                <a class="text-decoration-none" href="<?php echo '/detail.php?id=' . $prod->product_id; ?>">
                     <?php echo $prod->name; ?>
                 </a>
             </h3>
@@ -26,7 +26,7 @@
             <div class="my-1 py-1 border text-center"><?php echo $prod->quantity; ?></div>
             <input class="form-control form-control-sm" type="submit" value="+" name="action">
 
-            <input type="hidden" value="<?php echo $prod->id; ?>" name="id">
+            <input type="hidden" value="<?php echo $prod->product_id; ?>" name="id">
         </form>
 
         <form method="POST" action="/controllers/cart.ctl.php">
@@ -36,7 +36,7 @@
             </button>
 
             <input type="hidden" value="remove" name="action">
-            <input type="hidden" value="<?php echo $prod->id; ?>" name="id">
+            <input type="hidden" value="<?php echo $prod->product_id; ?>" name="id">
         </form>
     </div>
 </div>

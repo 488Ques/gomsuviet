@@ -1,5 +1,4 @@
 <?php
-
 class productOrderModel
 {
     protected PDO $db;

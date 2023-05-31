@@ -1,10 +1,12 @@
 <?php
 // $prod => array('id' => $id, 'name' => $name, 'price' => $price, 'quantity' => $quantity, 'url' => $url)
-// $cart = $_SESSION['cart'] => array($prod['id'] => $prod)
+// $cart = $_SESSION[CART_SESSION_KEY] => array($prod['id'] => $prod)
+
+const CART_SESSION_KEY = 'cart';
 
 class CartItem
 {
-    public $id;
+    public $product_id;
     public $merchant_id;
     public $name;
     public $price;
@@ -13,7 +15,7 @@ class CartItem
 
     public function __construct($id, $merchant_id, $name, $price, $quantity, $url)
     {
-        $this->id = $id;
+        $this->product_id = $id;
         $this->merchant_id = $merchant_id;
         $this->name = $name;
         $this->price = $price;
@@ -26,32 +28,32 @@ class Cart
 {
     public static function addCartItem(CartItem $item)
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
 
-        if (array_key_exists($item->id, $cart)) {
-            $existingItem = unserialize($cart[$item->id]);
+        if (array_key_exists($item->product_id, $cart)) {
+            $existingItem = unserialize($cart[$item->product_id]);
             $existingItem->quantity++;
-            $cart[$item->id] = serialize($existingItem);
+            $cart[$item->product_id] = serialize($existingItem);
         } else {
-            $cart[$item->id] = serialize($item);
+            $cart[$item->product_id] = serialize($item);
         }
 
-        $_SESSION['cart'] = $cart;
+        $_SESSION[CART_SESSION_KEY] = $cart;
     }
 
     public static function removeCartItem($id)
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
 
         if (array_key_exists($id, $cart)) {
             unset($cart[$id]);
-            $_SESSION['cart'] = $cart;
+            $_SESSION[CART_SESSION_KEY] = $cart;
         }
     }
 
     public static function decreaseCartItem($id)
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
 
         if (array_key_exists($id, $cart)) {
             $item = unserialize($cart[$id]);
@@ -59,27 +61,27 @@ class Cart
             if ($item->quantity > 1) {
                 $item->quantity--;
                 $cart[$id] = serialize($item);
-                $_SESSION['cart'] = $cart;
+                $_SESSION[CART_SESSION_KEY] = $cart;
             }
         }
     }
 
     public static function increaseCartItem($id)
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
 
         if (array_key_exists($id, $cart)) {
             $item = unserialize($cart[$id]);
 
             $item->quantity++;
             $cart[$id] = serialize($item);
-            $_SESSION['cart'] = $cart;
+            $_SESSION[CART_SESSION_KEY] = $cart;
         }
     }
 
     public static function sumCartPrice()
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
         $sum = 0;
 
         foreach ($cart as $item) {
@@ -95,7 +97,7 @@ class Cart
 
     public static function sumCartQuantity()
     {
-        $cart = $_SESSION['cart'] ?? [];
+        $cart = $_SESSION[CART_SESSION_KEY] ?? [];
         $sum = 0;
 
         foreach ($cart as $item) {
@@ -111,6 +113,6 @@ class Cart
 
     public static function emptyCart()
     {
-        $_SESSION['cart'] = [];
+        $_SESSION[CART_SESSION_KEY] = [];
     }
 }
