@@ -4,8 +4,8 @@ session_start();
 if (!empty($_SESSION['user'])) {
     unset($_SESSION['user']);
     header('Location: /');
-} else if (!empty($_SESSION['merchantUsername'])) {
-    unset($_SESSION['merchantUsername']);
+} else if (!empty($_SESSION['merchant'])) {
+    unset($_SESSION['merchant']);
     header('Location: /');
 } else {
     header('Content-type: text/html; charset=utf8');

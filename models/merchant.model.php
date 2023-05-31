@@ -1,5 +1,7 @@
 <?php
-require_once('models/DTOs/merchant.php');
+require_once('../models/DTOs/merchant.php');
+
+const MERCHANT_SESSION_KEY = 'merchant';
 
 class merchantModel
 {
@@ -16,12 +18,26 @@ class merchantModel
         return $stmt->execute([$username, $password, $first_name, $last_name, $address, $email_address]);
     }
 
-    public function login($username, $password): bool
+    /**
+     * @param $username
+     * @param $password
+     * @return false|mixed Return an array containing the ID $user['id'] and username $user['username'] if the login is successful. False otherwise.
+     */
+    public function login($username, $password)
     {
-        $stmt = $this->db->prepare('SELECT COUNT(*) FROM merchant WHERE username = ? AND password = PASSWORD(?) AND deleted_at IS NULL');
-        $stmt->execute([$username, $password]);
+        $stmt = $this->db->prepare('SELECT id, username FROM merchant WHERE username = :username AND 
+                                            password = PASSWORD(:password) AND deleted_at IS NULL');
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->execute();
 
-        return $stmt->fetchColumn();
+        $merchant = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($merchant) {
+            return $merchant;
+        }
+
+        return false;
     }
 
     /**
