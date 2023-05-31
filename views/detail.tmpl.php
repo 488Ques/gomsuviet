@@ -31,7 +31,7 @@
                     foreach ($images as $i => $image) {
                         // Only put 'active' CSS class on the first carousel item
                         // so the carousel can work properly
-                        echo (sprintf($carouselItem, $i == 0 ? 'active' : '', $image['url']));
+                        echo(sprintf($carouselItem, $i == 0 ? 'active' : '', $image['url']));
                     }
                     ?>
                 </div>
@@ -44,7 +44,7 @@
                     </div>';
 
                     foreach ($images as $i => $image) {
-                        echo (sprintf($carouselThumb, $i, $image['url']));
+                        echo(sprintf($carouselThumb, $i, $image['url']));
                     }
                     ?>
                 </div>
@@ -57,7 +57,8 @@
                 <h2 class="mb-1 fw-semibold"><?php echo $prod->name ?></h1>
 
                     <div class="fs-4">
-                        <span class="fw-bold text-dark"><?php echo (number_format($prod->price) . " VNĐ"); ?></span>
+                        <span class="fw-bold text-dark"><?php echo(number_format($prod->price) . " VNĐ"); ?></span>
+                        <span>Merchant ID: <?php echo($prod->merchant_id) ?></span>
                         <!-- TODO Discount -->
                         <!-- <span class="text-decoration-line-through text-muted">$35</span>
             <span><small class="fs-6 ms-2 text-danger">26% Off</small></span> -->
@@ -74,6 +75,7 @@
 
                             <input type="hidden" value="add" name="action">
                             <input type="hidden" value="<?php echo $prod->id; ?>" name="id">
+                            <input type="hidden" value="<?php echo $prod->merchant_id; ?>" name="merchant_id">
                             <input type="hidden" value="<?php echo $prod->name; ?>" name="name">
                             <input type="hidden" value="<?php echo $prod->price; ?>" name="price">
                             <input type="hidden" value="1" name="quantity">
@@ -81,20 +83,25 @@
                         </form>
 
                         <!-- TODO Wishlist -->
-                        <a class="col-md-1 col-12 btn btn-light" data-bs-toggle="tooltip" data-bs-html="true" aria-label="Wishlist">
+                        <a class="col-md-1 col-12 btn btn-light" data-bs-toggle="tooltip" data-bs-html="true"
+                           aria-label="Wishlist">
                             <i class="bi bi-heart"></i>
                         </a>
 
                         <div class="col-md-4 col-12">
                             <div class="dropdown">
-                                <a class="btn btn-outline-secondary dropdown-toggle w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="btn btn-outline-secondary dropdown-toggle w-100" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     Share
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-facebook me-2"></i>Facebook</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i>Twitter</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-instagram me-2"></i>Instagram</a></li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-facebook me-2"></i>Facebook</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-twitter me-2"></i>Twitter</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-instagram me-2"></i>Instagram</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -106,17 +113,17 @@
                     <div>
                         <table class="table table-borderless">
                             <tbody>
-                                <?php
-                                $tableRow = '
+                            <?php
+                            $tableRow = '
                                 <tr>
                                     <td>%s</td>
                                     <td>%s</td>
                                 </tr>';
 
-                                foreach ($specsJSON as $attr => $val) {
-                                    echo sprintf($tableRow, $attr, $val);
-                                }
-                                ?>
+                            foreach ($specsJSON as $attr => $val) {
+                                echo sprintf($tableRow, $attr, $val);
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

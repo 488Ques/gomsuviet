@@ -79,7 +79,7 @@ class productModel
         $args = array();
 
         if (!empty($tags) || !empty($partialName) || !empty($lowerPrice)) {
-            $stmt = 'SELECT prod.id, prod.name, prod.price FROM product prod WHERE ';
+            $stmt = 'SELECT prod.id, prod.merchant_id, prod.name, prod.price FROM product prod WHERE ';
             if (!empty($partialName)) {
                 array_push($args, '%' . $partialName . '%'); // Match all product name containing $partialName
                 $stmt = $stmt . 'prod.name LIKE ? AND ';
@@ -105,7 +105,7 @@ class productModel
 
             $stmt = $stmt . '1;';
         } else {
-            $stmt = 'SELECT prod.id, prod.name, prod.price FROM product prod;';
+            $stmt = 'SELECT prod.id, prod.merchant_id, prod.name, prod.price FROM product prod;';
         }
 
         $prepared = $this->db->prepare($stmt);
@@ -115,7 +115,7 @@ class productModel
         while ($temp = $prepared->fetch()) {
             $prod = new product(
                 $temp['id'],
-                null,
+                $temp['merchant_id'],
                 $temp['name'],
                 null,
                 $temp['price'],

@@ -8,7 +8,7 @@ $cart = $_SESSION['cart'];
         <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-primary">Giỏ hàng</span>
-                <span class="badge bg-primary rounded-pill"><?php echo sumProdCart() ? sumProdCart() : 0; ?> </span>
+                <span class="badge bg-primary rounded-pill"><?php echo Cart::sumCartQuantity() ? Cart::sumCartQuantity() : 0; ?> </span>
             </h4>
             <ul class="list-group mb-3">
                 <?php
@@ -20,13 +20,15 @@ $cart = $_SESSION['cart'];
                     <span class="text-muted">%s VNĐ</span>
                 </li>';
                 foreach ($cart as $prod) {
-                    echo sprintf($li, $prod['name'], number_format($prod['price']));
+                    /** @var CartItem $item */
+                    $item = unserialize($prod);
+                    echo sprintf($li, $item->name, number_format($item->price));
                 }
                 ?>
 
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Tổng cộng (VNĐ)</span>
-                    <strong><?php echo number_format(sumPriceCart() ?? 0); ?> VNĐ</strong>
+                    <strong><?php echo number_format(Cart::sumCartPrice() ?? 0); ?> VNĐ</strong>
                 </li>
             </ul>
         </div>
@@ -35,7 +37,8 @@ $cart = $_SESSION['cart'];
             <?php include_once('views/msg.php'); ?>
 
             <h4 class="mb-3">Chọn địa chỉ nhận hàng</h4>
-            <form method="POST" action="/controllers/checkout.ctl.php" class="needs-validation" novalidate="">
+<!--            class="needs-validation"-->
+            <form method="POST" action="/controllers/checkout.ctl.php"  novalidate="">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label class="form-label">Họ</label>

@@ -7,26 +7,20 @@ $action =  $_POST['action'];
 if (!empty($action)) {
     switch ($action) {
         case 'add':
-            $prod = array(
-                'id' => $_POST['id'],
-                'name' => $_POST['name'],
-                'price' => $_POST['price'],
-                'quantity' => $_POST['quantity'],
-                'url' => $_POST['url']
-            );
-            addCart($prod);
+            $item = new CartItem($_POST['id'], $_POST['merchant_id'], $_POST['name'], $_POST['price'], $_POST['quantity'], $_POST['url']);
+            Cart::addCartItem($item);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             break;
         case '-':
-            decreaseProdCart($_POST['id']);
+            Cart::decreaseCartItem($_POST['id']);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             break;
         case '+':
-            increaseProdCart($_POST['id']);
+            Cart::increaseCartItem($_POST['id']);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             break;
         case 'remove':
-            removeCart($_POST['id']);
+            Cart::removeCartItem($_POST['id']);
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             break;
     }
