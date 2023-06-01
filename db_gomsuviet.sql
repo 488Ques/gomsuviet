@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 07:51 PM
+-- Generation Time: Jun 01, 2023 at 09:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -64,6 +64,7 @@ CREATE TABLE `order_items` (
   `product_id` int(4) NOT NULL,
   `merchant_id` int(4) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `confirmed_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -73,12 +74,14 @@ CREATE TABLE `order_items` (
 -- Dumping data for table `order_items`
 --
 
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `merchant_id`, `quantity`, `created_at`, `modified_at`, `deleted_at`) VALUES
-(1, 1, 14, 2, 1, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
-(2, 2, 1, 1, 3, '2023-05-31 17:18:41', '2023-05-31 17:18:41', NULL),
-(3, 3, 1, 1, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
-(4, 3, 2, 1, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
-(5, 3, 3, 2, 1, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL);
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `merchant_id`, `quantity`, `confirmed_at`, `created_at`, `modified_at`, `deleted_at`) VALUES
+(1, 1, 14, 2, 1, NULL, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
+(2, 2, 1, 1, 3, '2023-06-01 19:32:35', '2023-05-31 17:18:41', '2023-06-01 19:32:35', NULL),
+(3, 3, 1, 1, 1, '2023-06-01 19:29:01', '2023-05-31 17:20:48', '2023-06-01 19:29:01', NULL),
+(4, 3, 2, 1, 1, '2023-06-01 19:38:59', '2023-05-31 17:20:48', '2023-06-01 19:38:59', NULL),
+(5, 3, 3, 2, 1, NULL, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
+(6, 4, 2, 1, 1, NULL, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL),
+(7, 4, 1, 1, 2, NULL, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -431,7 +434,8 @@ CREATE TABLE `product_order` (
 INSERT INTO `product_order` (`id`, `user_id`, `created_at`, `modified_at`, `deleted_at`) VALUES
 (1, 2, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
 (2, 2, '2023-05-31 17:18:41', '2023-05-31 17:18:41', NULL),
-(3, 2, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL);
+(3, 2, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
+(4, 3, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL);
 
 -- --------------------------------------------------------
 
@@ -559,7 +563,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `email_address`, `created_at`, `modified_at`, `deleted_at`) VALUES
 (1, 'abc', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', NULL, NULL, 'abc@xyz.com', '2022-11-06 16:14:58', '2022-11-06 16:14:58', NULL),
-(2, 'user1', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Anh', 'Trần Quốc', 'anh66829@gmail.com', '2023-05-31 16:21:27', '2023-05-31 16:21:27', NULL);
+(2, 'user1', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Anh', 'Trần Quốc', 'anh66829@gmail.com', '2023-05-31 16:21:27', '2023-05-31 16:21:27', NULL),
+(3, 'user2', '*23AE809DDACAF96AF0FD78ED04B6A265E05AA257', 'Mỹ Dương', 'Lê Thị', 'duong52820@gmail.com', '2023-06-01 18:42:00', '2023-06-01 18:42:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -643,7 +648,7 @@ ALTER TABLE `merchant`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -661,7 +666,7 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT for table `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product_specs`
@@ -679,7 +684,7 @@ ALTER TABLE `product_tag`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
