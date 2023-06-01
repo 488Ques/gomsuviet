@@ -1,5 +1,5 @@
 <?php
-require_once('models/DTOs/product.php');
+require_once(DIR_BASE . 'models/DTOs/product.php');
 
 class productModel
 {
