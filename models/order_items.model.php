@@ -1,5 +1,9 @@
 <?php
-class orderItemsModel {
+require_once("../include_path.php");
+require_once(DIR_BASE . 'models/DTOs/order_items.php');
+
+class orderItemsModel
+{
     protected PDO $db;
 
     public function __construct(PDO $db)
@@ -21,5 +25,16 @@ class orderItemsModel {
         $stmt->execute();
 
         return $this->db->lastInsertId();
+    }
+
+    public function confirmOrderItem(int $orderItemId): bool
+    {
+        $sql = 'UPDATE order_items SET confirmed_at = CURRENT_TIMESTAMP WHERE id = :order_item_id';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':order_item_id', $orderItemId, PDO::PARAM_INT);
+        $result = $stmt->execute();
+
+        return $result;
     }
 }

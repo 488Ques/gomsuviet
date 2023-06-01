@@ -10,8 +10,9 @@ $merchantModel = new merchantModel(DB());
 $username = $_POST['username'];
 $password = $_POST['password'];
 if (!empties($username, $password)) {
-    if ($merchantModel->login($username, $password)) {
-        $_SESSION['merchantUsername'] = $username;
+    $merchant = $merchantModel->login($username, $password);
+    if ($merchant) {
+        $_SESSION[MERCHANT_SESSION_KEY] = $merchant;
         header('Location: /');
     } else {
         header('Location: /login.php?msg=login-fail&username=' . $username);

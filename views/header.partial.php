@@ -1,5 +1,5 @@
 <?php
-require_once('modules/cart.php');
+require_once(DIR_BASE . 'modules/cart.php');
 ?>
 
 <nav class="navbar navbar-expand-lg">
@@ -52,8 +52,8 @@ require_once('modules/cart.php');
                         <?php
                         if (!empty($_SESSION['user'])) {
                             echo $_SESSION['user']['username'];
-                        } else if (!empty($_SESSION['merchantUsername'])) {
-                            echo $_SESSION['merchantUsername'];
+                        } else if (!empty($_SESSION['merchant'])) {
+                            echo $_SESSION['merchant']['username'];
                         } else {
                             echo 'Tài khoản';
                         }
@@ -64,7 +64,8 @@ require_once('modules/cart.php');
                         <?php
                         if (!empty($_SESSION['user'])) {
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
-                        } else if (!empty($_SESSION['merchantUsername'])) {
+                        } else if (!empty($_SESSION['merchant'])) {
+                            echo '<li><a class="dropdown-item" href="/merchant/orders.php">Quản lý đơn hàng</a></li>';
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
                         } else {
                             echo '<li><a class="dropdown-item" href="/login.php">Đăng nhập</a></li>
