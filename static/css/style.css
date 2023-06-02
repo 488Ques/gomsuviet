@@ -8,43 +8,43 @@ a:hover {
 } */
 
 .mt-5 {
-  margin-top: 1.75rem !important
+    margin-top: 1.75rem !important
 }
 
 .mt-6 {
-  margin-top: 2rem !important
+    margin-top: 2rem !important
 }
 
 .mt-7 {
-  margin-top: 2.25rem !important
+    margin-top: 2.25rem !important
 }
 
 .mt-8 {
-  margin-top: 2.5rem !important
+    margin-top: 2.5rem !important
 }
 
 .my-5 {
-  margin-bottom: 1.75rem !important;
-  margin-top: 1.75rem !important
+    margin-bottom: 1.75rem !important;
+    margin-top: 1.75rem !important
 }
 
 .my-6 {
-  margin-bottom: 2rem !important;
-  margin-top: 2rem !important
+    margin-bottom: 2rem !important;
+    margin-top: 2rem !important
 }
 
 .my-7 {
-  margin-bottom: 2.25rem !important;
-  margin-top: 2.25rem !important
+    margin-bottom: 2.25rem !important;
+    margin-top: 2.25rem !important
 }
 
 .my-8 {
-  margin-bottom: 2.5rem !important;
-  margin-top: 2.5rem !important
+    margin-bottom: 2.5rem !important;
+    margin-top: 2.5rem !important
 }
 
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 /* -------- index page -------- */
@@ -55,246 +55,404 @@ table {
     box-sizing: border-box;
 } */
 @font-face {
-  font-family: SamsungOne;
-  src: url(/static/font/SamsungOne.ttf);
+    font-family: SamsungOne;
+    src: url(/static/font/SamsungOne.ttf);
 }
 
 @font-face {
-  font-family: SamsungSharpSans;
-  src: url(/static/font/SamsungSharpSans.ttf);
+    font-family: SamsungSharpSans;
+    src: url(/static/font/SamsungSharpSans.ttf);
 }
 
 .font-SamsungOne {
-  font-family: SamsungOne;
+    font-family: SamsungOne;
 }
 
 .font-SamsungSharpSans {
-  font-family: SamsungSharpSans;
+    font-family: SamsungSharpSans;
 }
 
 .navbar {
-  background: whitesmoke;
-  font-family: SamsungOne;
+    background: whitesmoke;
+    font-family: SamsungOne;
 }
 
 .navbar-brand {
-  font-size: 1.75rem;
-  color: black;
-  margin-right: 25px;
-  font-weight: bold;
-  font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1.75rem;
+    color: black;
+    margin-right: 25px;
+    font-weight: bold;
+    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 .nav-link {
-  color: black;
-  margin-left: 12px;
-  margin-right: 12px;
+    color: black;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .nav-link:hover {
-  color: #0d6efd;
+    color: #0d6efd;
 }
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  z-index: 3;
-  background-color: whitesmoke;
+    display: none;
+    position: absolute;
+    z-index: 3;
+    background-color: whitesmoke;
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+    display: block;
 }
 
 .sm-icons {
-  flex-direction: row;
+    flex-direction: row;
 }
 
 .carousel-item {
-  width: 100%;
+    width: 100%;
 }
 
 .carousel-caption {
-  top: 39%;
-  z-index: 2;
+    top: 39%;
+    z-index: 2;
 }
 
 .carousel-caption h5 {
-  font-size: 45px;
-  text-transform: uppercase;
+    font-size: 45px;
+    text-transform: uppercase;
 }
 
 .carousel-caption p {
-  width: 60%;
-  margin: auto;
-  font-size: 18px;
-  line-height: 2;
+    width: 60%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 2;
 }
 
 .carousel-caption btn {
-  margin-top: 10px;
+    margin-top: 10px;
 
 }
 
 .carousel-caption .btn-primary {
-  background-color: #0d6efd;
-  border: 1px solid white;
-  font-size: 22px;
+    background-color: #0d6efd;
+    border: 1px solid white;
+    font-size: 22px;
 }
 
 .carousel-caption .btn-primary:hover {
-  background-color: #3c6cb4;
-  border: 1px solid white;
+    background-color: #3c6cb4;
+    border: 1px solid white;
 }
 
 .darkened::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.60);
-  z-index: 1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.60);
+    z-index: 1;
 }
 
 @media (max-width: 992px) {
-  .carousel-caption {
-    top: 35%;
-  }
+    .carousel-caption {
+        top: 35%;
+    }
 
-  .carousel-caption h5 {
-    font-size: 37px;
-  }
+    .carousel-caption h5 {
+        font-size: 37px;
+    }
 
-  .carousel-caption p {
-    font-size: 15px;
-  }
+    .carousel-caption p {
+        font-size: 15px;
+    }
 
-  .carousel-caption .btn {
-    font-size: 19px;
-  }
+    .carousel-caption .btn {
+        font-size: 19px;
+    }
 }
 
 @media (max-width: 768px) {
-  .carousel-caption {
-    top: 20%;
-  }
+    .carousel-caption {
+        top: 20%;
+    }
 
-  .carousel-caption h5 {
-    font-size: 30px;
-  }
+    .carousel-caption h5 {
+        font-size: 30px;
+    }
 
-  .carousel-caption p {
-    font-size: 13px;
-  }
+    .carousel-caption p {
+        font-size: 13px;
+    }
 
-  .carousel-caption .btn {
-    font-size: 17px;
-  }
+    .carousel-caption .btn {
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 576px) {
-  .carousel-caption {
-    top: 15%;
-  }
+    .carousel-caption {
+        top: 15%;
+    }
 
-  .carousel-caption h5 {
-    font-size: 25px;
-  }
+    .carousel-caption h5 {
+        font-size: 25px;
+    }
 
-  .carousel-caption p {
-    font-size: 11px;
-  }
+    .carousel-caption p {
+        font-size: 11px;
+    }
 
-  .carousel-caption .btn {
-    font-size: 14px;
-  }
+    .carousel-caption .btn {
+        font-size: 14px;
+    }
 }
 
-@media (max-width: 480px){
-	.carousel-caption {
-		top: 13%;
-	}
-	.carousel-caption h5{
-		font-size: 20px;
-	}
-	.carousel-caption p{		
-		font-size: 10px;		
-	}
-	.carousel-caption .btn {		
-		font-size: 12px;
-	}	
+@media (max-width: 480px) {
+    .carousel-caption {
+        top: 13%;
+    }
+
+    .carousel-caption h5 {
+        font-size: 20px;
+    }
+
+    .carousel-caption p {
+        font-size: 10px;
+    }
+
+    .carousel-caption .btn {
+        font-size: 12px;
+    }
 }
 
 .list-product-title {
-  width: 100%;
-  text-transform: uppercase;
-  margin-left: 5px;
-  margin-right: 5px;
+    width: 100%;
+    text-transform: uppercase;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 
 .list-product-subtitle {
-  width: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-
 .card-product {
-  width: 100%;
-  margin-left: 5px;
-  margin-right: 5px;
-  overflow: hidden;
-  position: relative;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+    position: relative;
 }
 
 .product-title {
-  margin-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .card-text .product-price {
-  position: relative;
+    position: relative;
 }
 
 .btn-add-to-cart {
-  background-color: #3a5c83;
-  color: white;
+    background-color: #3a5c83;
+    color: white;
 }
 
 .btn-add-to-cart:hover {
-  background-color: #f90;
+    background-color: #f90;
 }
 
 .btn-detail {
-  border: 1px solid #3a5c83;
+    border: 1px solid #3a5c83;
 }
 
 .btn-detail:hover {
-  color: white;
-  background-color: #3a5c83;
+    color: white;
+    background-color: #3a5c83;
 }
 
 /* Footer */
 .social a {
-  font-size: 30px;
-  padding: 10px;
+    font-size: 30px;
+    padding: 10px;
 }
 
 .bi-facebook {
-  color: #0d6efd;
+    color: #0d6efd;
 }
 
 .bi-instagram {
-  color: #d6249f;
+    color: #d6249f;
 }
 
 .bi-youtube {
-  color:#bb0000;
+    color: #bb0000;
+}
+
+/*-------------- Tung CSS --------------*/
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    background-color: whitesmoke;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: #0d6efd;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(74, 74, 78, .12);
+    display: flex;
+    justify-content: space-between;
+}
+
+/*.navbar a {*/
+/*    margin: auto 30px;*/
+/*}*/
+
+.navbar li > div {
+    margin: auto 30px;
+}
+
+.category {
+    margin-top: 20px;
+    background: #fff;
+    padding: 1px 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+    margin-bottom: 0px;
+    border-radius: 4px;
+}
+
+.category-item ul {
+    padding-left: 0px;
+}
+
+.category-item a {
+    color: black;
+    text-decoration: none;
+    padding: 0px;
+}
+
+.category-item {
+    color: black;
+
+    list-style: none;
+    margin: 20px 20px;
+    font-size: 20px;
+}
+
+.Product-section {
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 24px 24px 0;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+    border-radius: 2px;
+}
+
+.Product-content {
+    margin: 20px auto;
+}
+
+.Product-content, .name {
+    display: flex;
+    height: 50px;
+}
+
+.text {
+    width: 250px;
+    display: flex;
+    align-items: center;
+}
+
+span {
+    font-size: 20px;
+}
+
+.inp {
+    flex: 1;
+}
+
+.icon {
+    color: red;
+}
+
+#image-preview img {
+    height: 100px;
+    margin: 10px;
+}
+
+#image-preview {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-image {
+    height: 150px;
+}
+
+.btn-group {
+    margin-right: 25px;
+    width: 200px;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.product-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.product-container {
+    width: 95%;
+    height: 200px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
+    border-radius: 2px;
+}
+
+.product-header {
+    display: flex;
+    text-align: center;
+    height: 80px;
+    background: #f5f5f5;
+}
+
+.product-body {
+    display: flex;
+    text-align: center;
+}
+
+.product-header-content, .product-body-content {
+    font-size: 20px;
+    margin-top: 20px;
+    flex: 1;
 }
