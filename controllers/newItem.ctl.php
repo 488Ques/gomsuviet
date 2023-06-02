@@ -32,19 +32,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productDetails = $_POST['product_details'] ?? '';
     $pattern = $_POST['pattern'] ?? '';
 
+    // If inputs are blank, show fail message
     if (empties($productName, $productPrice, $productType, $productDetailedType, $productColor, $quantity, $productDetails, $pattern)) {
         header('Location: /merchant/new-item.php?msg=new-item-fail');
         exit();
     }
 
     // Create a new product specification and retrieve the inserted specs ID
-//    $specsID = $productSpecsModel->new($productDetailedType, $productColor, $quantity, $productDetails, $pattern);
-//
-//    // Create a new product and retrieve the inserted product ID
-//    $productID = $productModel->new($merchant['id'], $productName, $productPrice, $specsID);
-//
-//    // Map the product to its corresponding tag using the product ID and tag ID
-//    $productTagMapModel->map($productID, $productType);
+    $specsID = $productSpecsModel->new($productDetailedType, $productColor, $quantity, $productDetails, $pattern);
+
+    // Create a new product and retrieve the inserted product ID
+    $productID = $productModel->new($merchant['id'], $productName, $productPrice, $specsID);
+
+    // Map the product to its corresponding tag using the product ID and tag ID
+    $productTagMapModel->map($productID, $productType);
 
     // Handle file upload
     $relativeUploadPath = 'static/image/product_images/';
@@ -72,14 +73,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Show failure message if there's no image
+    // Show fail message if there's no image
     if (count($uploadedImagePaths) == 0) {
         header('Location: /merchant/new-item.php?msg=new-item-fail');
         exit();
     }
 
     // Batch insert the product images into the product_image table, with the first image set as the thumbnail
-//    $productImageModel->batchInsert($uploadedImagePaths, $productID);
+    $productImageModel->batchInsert($uploadedImagePaths, $productID);
 
     // Display success message
     header('Location: /merchant/new-item.php?msg=new-item-success');
