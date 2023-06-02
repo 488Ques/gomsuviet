@@ -37,8 +37,7 @@ $cart = $_SESSION['cart'];
             <?php include_once('views/msg.php'); ?>
 
             <h4 class="mb-3">Chọn địa chỉ nhận hàng</h4>
-<!--            class="needs-validation"-->
-            <form method="POST" action="/controllers/checkout.ctl.php"  novalidate="">
+            <form method="POST" action="/controllers/checkout.ctl.php"  novalidate="" class="needs-validation">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <label class="form-label">Họ</label>
