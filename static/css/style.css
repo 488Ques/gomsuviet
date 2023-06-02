@@ -332,9 +332,9 @@ table {
     justify-content: space-between;
 }
 
-.navbar a {
-    margin: auto 30px;
-}
+/*.navbar a {*/
+/*    margin: auto 30px;*/
+/*}*/
 
 .navbar li > div {
     margin: auto 30px;
@@ -369,7 +369,7 @@ table {
 
 .Product-section {
     margin-top: 20px;
-    /*overflow: hidden;*/
+    overflow: hidden;
     padding: 24px 24px 0;
     background: #fff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .12);

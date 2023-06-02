@@ -1,4 +1,5 @@
 <?php
+
 class productTagMapModel
 {
     protected $db;
@@ -29,5 +30,15 @@ class productTagMapModel
         }
 
         return $prodIDs;
+    }
+
+    public function map(int $productID, int $tagID)
+    {
+        $sql = 'INSERT INTO producttag_map (product_id, tag_id) VALUES (:product_id, :tag_id)';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':product_id', $productID, PDO::PARAM_INT);
+        $stmt->bindValue(':tag_id', $tagID, PDO::PARAM_INT);
+
+        $stmt->execute();
     }
 }

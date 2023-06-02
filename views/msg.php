@@ -22,5 +22,12 @@ if ($msg != "") {
             break;
         case 'payment-success':
             echo displayAlert('Thanh toán thành công', 'alert-success');
+            break;
+        case 'new-item-success':
+            echo displayAlert('Đăng bán sản phẩm thành công', 'alert-success');
+            break;
+        case 'new-item-fail':
+            echo displayAlert('Đăng bán sản phẩm thất bại', 'alert-danger');
+            break;
     }
 }

@@ -143,4 +143,21 @@ class productModel
         $result = $prepared->fetchAll();
         return $result;
     }
+
+    public function new(int $merchantID, string $productName, int $price, int $specsID)
+    {
+        $sql = 'INSERT INTO product (merchant_id, name, price, specs_id) VALUES (:merchant_id, :name, :price, :specs_id)';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':merchant_id', $merchantID, PDO::PARAM_INT);
+        $stmt->bindValue(':name', $productName, PDO::PARAM_STR);
+        $stmt->bindValue(':price', $price, PDO::PARAM_INT);
+        $stmt->bindValue(':specs_id', $specsID, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        $lastInsertedID = $this->db->lastInsertId();
+
+        return $lastInsertedID;
+    }
 }

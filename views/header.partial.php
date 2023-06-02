@@ -66,6 +66,7 @@ require_once(DIR_BASE . 'modules/cart.php');
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
                         } else if (!empty($_SESSION['merchant'])) {
                             echo '<li><a class="dropdown-item" href="/merchant/orders.php">Quản lý đơn hàng</a></li>';
+                            echo '<li><a class="dropdown-item" href="/merchant/new-item.php">Đăng bán sản phẩm</a></li>';
                             echo '<li><a class="dropdown-item" href="/controllers/logout.ctl.php">Đăng xuất</a></li>';
                         } else {
                             echo '<li><a class="dropdown-item" href="/login.php">Đăng nhập</a></li>

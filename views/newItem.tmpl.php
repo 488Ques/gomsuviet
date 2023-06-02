@@ -1,7 +1,11 @@
 <div class="wrapper">
     <div class="content">
         <div class="mx-5">
-            <form method="POST" action="/controllers/newItem.ctl.php" enctype="multipart/form-data">
+            <div class="mt-4">
+                <?php include_once(DIR_BASE . 'views/msg.php'); ?>
+            </div>
+
+            <form method="POST" action="/controllers/newItem.ctl.php" enctype="multipart/form-data" class="pb-4">
                 <div class="Product-section">
                     <h2>Thông tin cơ bản</h2>
                     <hr>
@@ -85,6 +89,25 @@
                             </select>
                             <label for="floatingSelect">Chọn loại sản phẩm</label>
                         </div>
+                    </div>
+
+                    <!-- Product Detailed Type -->
+                    <div class="Product-content">
+                        <div class="name">
+                            <span class="icon">*</span>
+                            <span class="text">Chi tiết loại sản phẩm </span>
+                        </div>
+                        <input type="text" class="form-control inp" name="product_detailed_type"
+                               placeholder="vd: Ấm chén vẽ vàng">
+                    </div>
+
+                    <!-- Product Color -->
+                    <div class="Product-content">
+                        <div class="name">
+                            <span class="icon">*</span>
+                            <span class="text">Màu sắc </span>
+                        </div>
+                        <input type="text" class="form-control inp" name="product_color" placeholder="vd: Trắng">
                     </div>
 
                     <!-- Quantity -->

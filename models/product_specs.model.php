@@ -26,4 +26,28 @@ class productSpecsModel
             $result['deleted_at'],
         );
     }
+
+    public function new(string $detailedType, string $color, int $quantity, string $productDetails, string $pattern)
+    {
+        // Create an array to store the specifications
+        $specs = [
+            'Loại sản phẩm' => $detailedType,
+            'Màu sắc' => $color,
+            'Số món' => (string) $quantity,
+            'Chi tiết các món' => $productDetails,
+            'Hoa văn' => $pattern
+        ];
+
+        // Convert the array to JSON format
+        $specsJson = json_encode($specs);
+
+        // Insert the specification into the product_specs table
+        $sql = 'INSERT INTO product_specs (specs) VALUES (:specs)';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':specs', $specsJson, PDO::PARAM_STR);
+        $stmt->execute();
+
+        // Return the last inserted ID
+        return $this->db->lastInsertId();
+    }
 }

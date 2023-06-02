@@ -36,4 +36,28 @@ class productImageModel
 
         return $result['url'];
     }
+
+    public function batchInsert(array $imagePaths, int $productID)
+    {
+        // Prepare the SQL statement for batch insertion
+        $sql = "INSERT INTO product_image (url, product_id, is_thumbnail) VALUES (:url, :product_id, :is_thumbnail)";
+        $stmt = $this->db->prepare($sql);
+
+        // Initialize the thumbnail flag
+        $is_thumbnail = 1;
+
+        // Bind parameters for each image path and execute the batch insert
+        foreach ($imagePaths as $imagePath) {
+            // Bind the parameters
+            $stmt->bindParam(':url', $imagePath);
+            $stmt->bindParam(':product_id', $productID);
+            $stmt->bindParam(':is_thumbnail', $is_thumbnail, PDO::PARAM_BOOL);
+
+            // Execute the statement
+            $stmt->execute();
+
+            // Set the thumbnail flag to 0 for the rest of the images
+            $is_thumbnail = 0;
+        }
+    }
 }
