@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 08:30 PM
+-- Generation Time: Jun 03, 2023 at 04:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -81,7 +81,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `merchant_id`, `quant
 (4, 3, 2, 1, 1, '2023-06-01 19:38:59', '2023-05-31 17:20:48', '2023-06-01 19:38:59', NULL),
 (5, 3, 3, 2, 1, NULL, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
 (6, 4, 2, 1, 1, NULL, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL),
-(7, 4, 1, 1, 2, NULL, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL);
+(7, 4, 1, 1, 2, NULL, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL),
+(8, 5, 3, 2, 1, NULL, '2023-06-03 06:31:32', '2023-06-03 06:31:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -435,7 +436,23 @@ INSERT INTO `product_order` (`id`, `user_id`, `created_at`, `modified_at`, `dele
 (1, 2, '2023-05-31 17:16:02', '2023-05-31 17:16:02', NULL),
 (2, 2, '2023-05-31 17:18:41', '2023-05-31 17:18:41', NULL),
 (3, 2, '2023-05-31 17:20:48', '2023-05-31 17:20:48', NULL),
-(4, 3, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL);
+(4, 3, '2023-06-01 19:48:20', '2023-06-01 19:48:20', NULL),
+(5, 2, '2023-06-03 06:31:32', '2023-06-03 06:31:32', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_rating`
+--
+
+CREATE TABLE `product_rating` (
+  `id` int(4) NOT NULL,
+  `product_id` int(4) NOT NULL,
+  `username` varchar(256) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `comment` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -547,7 +564,7 @@ INSERT INTO `product_tag` (`id`, `name`, `description`, `created_at`, `modified_
 
 CREATE TABLE `user` (
   `id` int(4) NOT NULL,
-  `username` varchar(256) NOT NULL,
+  `username` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` text NOT NULL,
   `first_name` text DEFAULT NULL,
   `last_name` text DEFAULT NULL,
@@ -616,6 +633,14 @@ ALTER TABLE `product_order`
   ADD KEY `FK_Product_order_User` (`user_id`);
 
 --
+-- Indexes for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_Product_rating_Product` (`product_id`),
+  ADD KEY `FK_Product_rating_User` (`username`);
+
+--
 -- Indexes for table `product_specs`
 --
 ALTER TABLE `product_specs`
@@ -648,7 +673,7 @@ ALTER TABLE `merchant`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -666,7 +691,13 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT for table `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_specs`
@@ -723,6 +754,13 @@ ALTER TABLE `product_image`
 --
 ALTER TABLE `product_order`
   ADD CONSTRAINT `FK_Product_order_User` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD CONSTRAINT `FK_Product_rating_Product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `FK_Product_rating_User` FOREIGN KEY (`username`) REFERENCES `user` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
