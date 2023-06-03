@@ -130,7 +130,7 @@
             </div>
         </div>
 
-        <div class="review-section">
+        <div class="review-section mt-4">
             <!-- Add a review form -->
             <h4>Hãy để lại đánh giá</h4>
             <form class="mb-4" action="/controllers/rating.ctl.php" method="POST">
@@ -170,33 +170,29 @@
             <h3>Đánh giá cho sản phẩm này</h3>
             <hr>
             <div class="existing-reviews">
-                <div class="review">
-                    <div class="review-header">
-                        <h5 class="review-username">John Doe</h5>
-                        <div class="review-rating">
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star"></span>
-                            <span class="bi bi-star"></span>
+                <?php if (empty($ratings)): ?>
+                    <p class="no-reviews fw-bold">Hiện chưa có đánh giá</p>
+                <?php else: ?>
+                    <?php foreach ($ratings as $rating): ?>
+                        <div class="review">
+                            <div class="review-header">
+                                <h5 class="review-username"><?php echo $rating->username; ?></h5>
+                                <div class="review-rating">
+                                    <?php for ($i = 1; $i <= 5; $i++): ?>
+                                        <?php if ($i <= $rating->rating): ?>
+                                            <span class="bi bi-star-fill"></span>
+                                        <?php else: ?>
+                                            <span class="bi bi-star"></span>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <p class="review-comment"><?php echo $rating->comment; ?></p>
                         </div>
-                    </div>
-                    <p class="review-comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="review">
-                    <div class="review-header">
-                        <h5 class="review-username">Jane Smith</h5>
-                        <div class="review-rating">
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                            <span class="bi bi-star-fill"></span>
-                        </div>
-                    </div>
-                    <p class="review-comment">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+
         </div>
     </div>
 </div>
