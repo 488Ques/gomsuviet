@@ -1,19 +1,25 @@
-<!-- carousel -->
 <?php
-$productCard = '
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="card card-product mb-3">
-                        <img class="card-img-top" src="%s" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="card-title product-title">%s</h5>
-                            <div class="card-text product-price">
-                                <span class="del-price">%s VNĐ</span>
-                            </div>
-                            <a href="/detail.php?id=%s" class="btn btn-primary">Xem chi tiết</a>
-                        </div>
+function buildProductCard($url, $name, $price, $id)
+{
+    return '
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card card-product mb-3">
+                <a href="/detail.php?id=' . $id . '">
+                    <img class="card-img-top" src="' . $url . '" alt="">
+                </a>
+                <div class="card-body text-center">
+                    <a href="/detail.php?id=' . $id . '" class="text-decoration-none">
+                        <h5 class="card-title product-title">' . $name . '</h5>
+                    </a>
+                    
+                    <div class="card-text product-price">
+                        <span class="del-price">' . $price . ' VNĐ</span>
                     </div>
+                    <a href="/detail.php?id=' . $id . '" class="btn btn-primary">Xem chi tiết</a>
                 </div>
-                ';
+            </div>
+        </div>';
+}
 ?>
 
 <!--<div id="productCarousel" class="carousel slide" data-bs-ride="carousel">-->
@@ -69,7 +75,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($phones as $phone) {
-                    echo sprintf($productCard, $phone['url'], $phone['name'], number_format($phone['price']), $phone['id']);
+                    echo buildProductCard($phone['url'], $phone['name'], number_format($phone['price']), $phone['id']);
                 }
                 ?>
             </div>
@@ -82,7 +88,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($tablets as $tablet) {
-                    echo sprintf($productCard, $tablet['url'], $tablet['name'], number_format($tablet['price']), $tablet['id']);
+                    echo buildProductCard($tablet['url'], $tablet['name'], number_format($tablet['price']), $tablet['id']);
                 }
                 ?>
             </div>
@@ -95,7 +101,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($laptops as $laptop) {
-                    echo sprintf($productCard, $laptop['url'], $laptop['name'], number_format($laptop['price']), $laptop['id']);
+                    echo buildProductCard($laptop['url'], $laptop['name'], number_format($laptop['price']), $laptop['id']);
                 }
                 ?>
             </div>
@@ -108,7 +114,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($acs as $ac) {
-                    echo sprintf($productCard, $ac['url'], $ac['name'], number_format($ac['price']), $ac['id']);
+                    echo buildProductCard($ac['url'], $ac['name'], number_format($ac['price']), $ac['id']);
                 }
                 ?>
             </div>
@@ -121,7 +127,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($fridges as $fridge) {
-                    echo sprintf($productCard, $fridge['url'], $fridge['name'], number_format($fridge['price']), $fridge['id']);
+                    echo buildProductCard($fridge['url'], $fridge['name'], number_format($fridge['price']), $fridge['id']);
                 }
                 ?>
             </div>
@@ -134,7 +140,7 @@ $productCard = '
             <div class="row">
                 <?php
                 foreach ($washers as $washer) {
-                    echo sprintf($productCard, $washer['url'], $washer['name'], number_format($washer['price']), $washer['id']);
+                    echo buildProductCard($washer['url'], $washer['name'], number_format($washer['price']), $washer['id']);
                 }
                 ?>
             </div>
