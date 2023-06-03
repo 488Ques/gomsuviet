@@ -13,7 +13,7 @@ class productOrderModel
      * @param int $userID
      * @return false|int ID of the newly created order, or false on failure
      */
-    public function newOrder(int $userID): false|int
+    public function newOrder(int $userID)
     {
         // Prepare the SQL statement to insert a new order
         $stmt = $this->db->prepare('INSERT INTO `product_order` (`user_id`) VALUES (:userID)');

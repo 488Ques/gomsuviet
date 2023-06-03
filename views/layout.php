@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700&display=swap" rel="stylesheet">
     <link href="/static/css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <!-- <link rel="icon" type="image/x-icon" href="/static/favicon.ico"> -->
     <title><?php echo $title; ?></title>
 </head>
 
