@@ -35,4 +35,18 @@ class productRatingModel
 
         return $ratings;
     }
+
+    public function new(int $productID, string $username, int $rating, string $comment)
+    {
+        $query = "INSERT INTO product_rating (product_id, username, rating, comment)
+                  VALUES (:product_id, :username, :rating, :comment)";
+
+        $statement = $this->db->prepare($query);
+        $statement->bindParam(':product_id', $productID, PDO::PARAM_INT);
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':rating', $rating, PDO::PARAM_INT);
+        $statement->bindParam(':comment', $comment, PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
 }
