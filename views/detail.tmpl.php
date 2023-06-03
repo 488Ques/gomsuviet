@@ -129,5 +129,74 @@
                     </div>
             </div>
         </div>
+
+        <div class="review-section">
+            <!-- Add a review form -->
+            <h4>Hãy để lại đánh giá</h4>
+            <form class="mb-4" action="/controllers/rating.ctl.php" method="POST">
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Điểm</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label class="me-2" for="star5" title="5 stars">
+                            5 <span class="bi bi-star-fill"></span>
+                        </label>
+                        <input type="radio" id="star4" name="rating" value="4" required>
+                        <label class="me-2" for="star4" title="4 stars">
+                            4 <span class="bi bi-star-fill"></span>
+                        </label>
+                        <input type="radio" id="star3" name="rating" value="3" required>
+                        <label class="me-2" for="star3" title="3 stars">
+                            3 <span class="bi bi-star-fill"></span>
+                        </label>
+                        <input type="radio" id="star2" name="rating" value="2" required>
+                        <label class="me-2" for="star2" title="2 stars">
+                            2 <span class="bi bi-star-fill"></span>
+                        </label>
+                        <input type="radio" id="star1" name="rating" value="1" required>
+                        <label class="me-2" for="star1" title="1 star">
+                            1 <span class="bi bi-star-fill"></span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <!-- Existing reviews -->
+            <h3>Đánh giá cho sản phẩm này</h3>
+            <hr>
+            <div class="existing-reviews">
+                <div class="review">
+                    <div class="review-header">
+                        <h5 class="review-username">John Doe</h5>
+                        <div class="review-rating">
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star"></span>
+                            <span class="bi bi-star"></span>
+                        </div>
+                    </div>
+                    <p class="review-comment">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="review">
+                    <div class="review-header">
+                        <h5 class="review-username">Jane Smith</h5>
+                        <div class="review-rating">
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                            <span class="bi bi-star-fill"></span>
+                        </div>
+                    </div>
+                    <p class="review-comment">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
